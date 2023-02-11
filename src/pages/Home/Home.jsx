@@ -3,8 +3,8 @@ import "../../App.css"
 import RightSidebar from "../../components/RightSidebar/RightSidebar";
 import LeftSidebar from "../../components/LeftSidebar/LeftSidebar"; 
 import HomeMainbar from "../../components/HomeMainbar/HomeMainbar";
+const Home = () => {  
 
-const Home = () => {
     return(
         <div className="home-container-1">
             <LeftSidebar/>

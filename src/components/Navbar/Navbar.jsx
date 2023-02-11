@@ -1,14 +1,25 @@
-import React from "react"
-import { Link } from "react-router-dom"
+import React, { useEffect } from "react"
+import { Link,useNavigate } from "react-router-dom"
 import logo from "../../assests/blacklogo.png"
 import search from '../../assests/search-solid.svg'
 import Avatar from "../../components/Avatar/Avatar"
+import { useDispatch, useSelector } from "react-redux"
 //import Button from "../../components/Button/Button"
 import "./Navbar.css"
+import { setCurrentUser } from "../../actions/currentUser"
 
 const Navbar = () => {
-
-    var user = null
+    const navigate = useNavigate()
+    const dispatch = useDispatch()
+    const user = useSelector(state => state.currentUserReducer)
+    console.log(user);
+    useEffect(()=>{
+        dispatch(setCurrentUser(JSON.parse(localStorage.getItem('profile'))))
+    },[dispatch])
+    const handleLogin = () =>{
+        localStorage.removeItem('profile')
+        navigate('/Auth')
+    }
 
     return (
         <nav className="main-nav">
@@ -27,8 +38,8 @@ const Navbar = () => {
                     user===null ?
                         <Link to='/Auth' className="nav-item nav-links">Log in</Link> :
                         <>
-                            <Avatar><Link to='/' style={{color:"white",textDecoration:"none"}}>M</Link></Avatar>
-                            <button className="nav-item nav-links">Log out</button>
+                            <Avatar><Link to='/' style={{color:"white",textDecoration:"none"}}>{user.name.charAt(0).toUpperCase()}</Link></Avatar>
+                            <button className="nav-item nav-links" onClick={handleLogin}>Log out</button>
                         </>
                 }
             </div>

@@ -4,7 +4,7 @@ import Home from "./pages/Home/Home"
 import Auth from "./pages/Auth/Auth"
 import Questions from "./components/Questions/Questions";
 import AskQuestion from "./pages/AskQuestion/AskQuestion";
-import DisplayQuestion from "./components/Questions/DisplayQuestion";
+import DisplayQuestion from "./pages/Questions/DisplayQuestion";
 
 const AllRoutes = () => {
     return(

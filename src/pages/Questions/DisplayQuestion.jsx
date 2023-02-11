@@ -1,6 +1,6 @@
 import React from "react";
-import LeftSidebar from "../LeftSidebar/LeftSidebar";
-import RightSidebar from "../RightSidebar/RightSidebar";
+import LeftSidebar from "../../components/LeftSidebar/LeftSidebar";
+import RightSidebar from "../../components/RightSidebar/RightSidebar";
 import QuestionDetails from "./QuestionDetails"
 
 const DisplayQuestion = () =>{

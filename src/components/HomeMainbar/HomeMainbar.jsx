@@ -1,12 +1,16 @@
 import React from "react";
-import {Link, useLocation, useNavigate } from "react-router-dom";
+import {useLocation, useNavigate } from "react-router-dom";
 import QuestionList from "./QuestionList.jsx";
+import { useSelector } from "react-redux"
 
 import "./HomeMainbar.css";
 
 const HomeMainbar = () =>{
 
-    var questionsList = [{
+    const questionsList = useSelector(state => state.questionReducer);
+    console.log(questionsList);
+
+    /*var questionsList = [{
         id:1,
         votes:3,
         noOfAnswers:2,
@@ -33,10 +37,11 @@ const HomeMainbar = () =>{
         questionTags:["angular","node js","express","mongoose"],
         userPosted:"Arvind",
         askedOn:"Feb 1"
-    }]
+    }]*/
 
     const location = useLocation()
-    const user = 1;
+    const user = useSelector(state => state.currentUserReducer)
+    console.log(user);
     const navigate = useNavigate();
 
     const redirect = () =>{
@@ -58,11 +63,11 @@ const HomeMainbar = () =>{
             </div>
             <div>
                 {
-                    questionsList === null ?
+                    questionsList.data === null ?
                     <h1>Loading...</h1> : 
                     <>
-                        <p>{ questionsList.length } questions</p>
-                        <QuestionList questionsList={questionsList} />
+                        <p>{ questionsList.data.length } questions</p>
+                        <QuestionList questionsList={questionsList.data} />
                     </>
                 }
             </div>

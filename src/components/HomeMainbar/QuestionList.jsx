@@ -7,7 +7,7 @@ const QuestionList = (props) => {
         <>
             {
                 props.questionsList.map((questions) => (
-                    <Question question={questions} key={questions.id}/>
+                    <Question question={questions} key={questions._id}/>
                 ))
             }
         </>

@@ -3,13 +3,14 @@ import { useParams,Link } from "react-router-dom";
 import upVote from "../../assests/caret-up.svg"
 import downVote from "../../assests/caret-down.svg"
 import "./Questions.css"
-import Avatar from "../Avatar/Avatar"
+import Avatar from "../../components/Avatar/Avatar"
 import DisplayAnswer from "./DisplayAnswer";
+import { useSelector } from "react-redux";
 const QuestionDetails = () => {
 
     const { id } = useParams()
-    
-    var questionsList = [{
+    const questionsList = useSelector(state => state.questionReducer);
+    /*var questionsList = [{
         id:'1',
         upVotes:3,
         downVotes:1,
@@ -75,16 +76,16 @@ const QuestionDetails = () => {
             answeredOn:"Feb 4",
             userId:"2",
         }]
-    }]
+    }]*/
     return (
         <div className="question-details-page">
             {
-                questionsList === null ? 
+                questionsList.data === null ? 
                 <h1>Loading....</h1> : 
                 <>
                 {
 
-                    questionsList.filter((question) => question.id === id ).map((question) => (
+                    questionsList.data.filter((question) => question._id === id ).map((question) => (
                         <div key={id}>
                             <section className="question-details-container">
                                 <h1>{question.questionTitle}</h1>
@@ -126,7 +127,7 @@ const QuestionDetails = () => {
                                 question.noOfAnswers !==0 && (
                                     <section>
                                         <h3>{question.noOfAnswers} answers</h3>
-                                        <DisplayAnswer key={question.id} question={question}/>
+                                        <DisplayAnswer key={question._id} question={question}/>
                                     </section>
                                 )
                             }
