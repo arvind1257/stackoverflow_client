@@ -1,5 +1,6 @@
 import React from "react";
 import {Link, useLocation } from "react-router-dom";
+import QuestionList from "./QuestionList.jsx";
 
 import "./HomeMainbar.css";
 
@@ -24,7 +25,7 @@ const HomeMainbar = () =>{
         userPosted:"Arvind",
         askedOn:"Feb 1"
     },{
-        id:1,
+        id:3,
         votes:1,
         noOfAnswers:0,
         questionTitle: "What is a function?",
@@ -47,7 +48,8 @@ const HomeMainbar = () =>{
                     questionsList === null ?
                     <h1>Loading...</h1> : 
                     <>
-                    <p>{ questionsList.length } questions</p>
+                        <p>{ questionsList.length } questions</p>
+                        <QuestionList questionsList={questionsList} />
                     </>
                 }
             </div>
