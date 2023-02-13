@@ -1,82 +1,61 @@
-import React from "react";
-import { useParams,Link } from "react-router-dom";
+import React, { useState } from "react";
+import { useParams,Link, useNavigate, useLocation } from "react-router-dom";
 import upVote from "../../assests/caret-up.svg"
 import downVote from "../../assests/caret-down.svg"
 import "./Questions.css"
+import moment from "moment"
 import Avatar from "../../components/Avatar/Avatar"
 import DisplayAnswer from "./DisplayAnswer";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { deleteQuestion, postAnswer, voteQuestion } from "../../actions/question";
+import copy from "copy-to-clipboard"
+
 const QuestionDetails = () => {
 
     const { id } = useParams()
+    const dispatch = useDispatch()
+    const navigate = useNavigate()
+    const [answer,setAnswer] = useState('')
+    const User = useSelector(state => state.currentUserReducer);
     const questionsList = useSelector(state => state.questionReducer);
-    /*var questionsList = [{
-        id:'1',
-        upVotes:3,
-        downVotes:1,
-        noOfAnswers:2,
-        questionTitle: "What is a function?",
-        questionBody:"It meant to be",
-        questionTags:["java","node.js","react.js","mongoose"],
-        userPosted:"Arvind",
-        userId:1,
-        askedOn:"Feb 1",
-        answer: [{
-            answerBody:"Answer1",
-            userAnswered:"Kumar",
-            answeredOn:"Feb 4",
-            userId:"2",
-        },{
-            answerBody:"Answer2",
-            userAnswered:"Kumar",
-            answeredOn:"Feb 4",
-            userId:"2",
-        }]
-    },{
-        id:'2',
-        upVotes:3,
-        downVotes:2,
-        noOfAnswers:2,
-        questionTitle: "What is a function?",
-        questionBody:"It meant to be",
-        questionTags:["javascript","python","R"],
-        userPosted:"Arvind",
-        userId:1,
-        askedOn:"Feb 1",
-        answer: [{
-            answerBody:"Answer1",
-            userAnswered:"Kumar",
-            answeredOn:"Feb 4",
-            userId:"2",
-        },{
-            answerBody:"Answer2",
-            userAnswered:"Kumar",
-            answeredOn:"Feb 4",
-            userId:"2",
-        }]
-    },{
-        id:'3',
-        upVotes:3,
-        downVotes:0,
-        noOfAnswers:2,
-        questionTitle: "What is a function?",
-        questionBody:"It meant to be",
-        questionTags:["angular","node.js","express","mongoose"],
-        userPosted:"Arvind",
-        userId:1,
-        askedOn:"Feb 1",
-        answer: [{
-            answerBody:"Answer1",
-            userAnswered:"Kumar",
-            answeredOn:"Feb 4",
-            userId:"2",
-        },{
-            answerBody:"Answer2",
-            userAnswered:"Kumar",
-            answeredOn:"Feb 4",
-            userId:"2",
-        }]
-    }]*/
+
+    const handleSubmit = (e,answerLength) =>{
+        e.preventDefault();
+        if(User !== null)
+        {
+            if(!answer){
+                alert("Answer can't be empty");
+            }
+            else{
+                dispatch(postAnswer(id,{noOfAnswers:answerLength+1,answerBody:answer,userAnswered: User.name,userId:User._id },navigate));
+                setAnswer('');
+            }
+        }
+        else{
+            alert('Login or Signup to answer a question')
+            navigate('/Auth')
+        }
+    }
+
+    const location = useLocation()
+    const url = location.pathname
+    const handleShare = () => {
+        copy("http://localhost:3000"+url)
+        alert("Copied Url : http://localhost:3000"+url)
+    }
+
+    const handleDelete = () => {
+        dispatch(deleteQuestion(id,navigate))
+    }
+
+    const handleUpVote = () => {
+        dispatch(voteQuestion({id:id,vote:'upVote',userId:User._id},navigate))
+    }
+
+    const handleDownVote = () => {
+        dispatch(voteQuestion({id:id,vote:'downVote',userId:User._id},navigate))
+    }
+
     return (
         <div className="question-details-page">
             {
@@ -91,9 +70,10 @@ const QuestionDetails = () => {
                                 <h1>{question.questionTitle}</h1>
                                 <div className="question-details-container-2">
                                     <div className="question-votes">
-                                        <img src={upVote} alt="upVote" width="30" className="votes-icon"/>
-                                        <p>{question.upVotes - question.downVotes}</p>
-                                        <img src={downVote} alt="downVote" width="30" className="votes-icon"/>
+                                        <img src={upVote} alt="upVote" width="30" className="votes-icon" onClick={handleUpVote}/>
+                                        {console.log(question.upVote.length - question.downVote.length)}
+                                        <p>{question.upVote.length - question.downVote.length}</p>
+                                        <img src={downVote} alt="downVote" width="30" className="votes-icon" onClick={handleDownVote}/>
                                     </div>
                                     <div style={{width:"100%"}}>
                                         <p className="question-body">{question.questionBody}</p>
@@ -106,11 +86,15 @@ const QuestionDetails = () => {
                                         </div>
                                         <div className="question-actions-user">
                                             <div>
-                                                <button type="button">Share</button>
-                                                <button type="button">Delete</button>
+                                                <button onClick={handleShare} >Share</button>
+                                                {
+                                                    User?._id === question?.userId && (
+                                                        <button type="button" onClick={handleDelete}>Delete</button>
+                                                    )
+                                                }
                                             </div>
                                             <div>
-                                                <p>asked {question.askedOn}</p>
+                                                <p>asked {moment(question.askedOn).fromNow()}</p>
                                                 <Link to={`/User/${question.userId}`} className="user-link" style={{color:"#0086d8"}}>
                                                     <Avatar>{question.userPosted.charAt(0).toUpperCase()}</Avatar>
                                                     <div>
@@ -134,8 +118,8 @@ const QuestionDetails = () => {
                             </section>
                             <section className="post-ans-container">
                                 <h3>Your Answer</h3>
-                                <form>
-                                    <textarea cols="30" rows="10"></textarea><br/>
+                                <form onSubmit={(e) => handleSubmit(e,question.answer.length)}>
+                                    <textarea value={answer} onChange={(e) => setAnswer(e.target.value)} cols="30" rows="10"></textarea><br/>
                                     <input type="submit" className="post-ans-btn" value="Post Your Answer"/>
                                 </form>
                                 <p>Browser other questions tagged 

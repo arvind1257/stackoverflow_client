@@ -16,7 +16,7 @@ const AskQuestion = () => {
 
     const handleSubmit = (e) =>{
         e.preventDefault();
-        dispatch(Ask({questionTitle,questionBody,questionTags,userPosted:user.name},navigate))
+        dispatch(Ask({questionTitle,questionBody,questionTags,userPosted:user.name,userId:user._id},navigate))
     }
 
 
@@ -31,7 +31,6 @@ const AskQuestion = () => {
         <div className="ask-question">
             <div className="ask-ques-container">
                 <h1>Ask a Public Question</h1>
-                <h1>{questionBody}</h1>
                 <form onSubmit={handleSubmit}>
                     <div className="ask-form-container">
                         <label htmlFor="ask-ques-title">

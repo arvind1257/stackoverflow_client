@@ -1,6 +1,5 @@
 import React from "react"
 import "../../App.css"
-import RightSidebar from "../../components/RightSidebar/RightSidebar";
 import LeftSidebar from "../../components/LeftSidebar/LeftSidebar"; 
 import HomeMainbar from "../../components/HomeMainbar/HomeMainbar";
 const Home = () => {  
@@ -10,7 +9,6 @@ const Home = () => {
             <LeftSidebar/>
             <div className="home-container-2">
                 <HomeMainbar/>
-                <RightSidebar/>
             </div>
         </div>
     )

@@ -1,6 +1,5 @@
 import React from "react";
 import LeftSidebar from "../../components/LeftSidebar/LeftSidebar";
-import RightSidebar from "../../components/RightSidebar/RightSidebar";
 import QuestionDetails from "./QuestionDetails"
 
 const DisplayQuestion = () =>{
@@ -9,7 +8,6 @@ const DisplayQuestion = () =>{
             <LeftSidebar/>
             <div className="home-container-2">
                 <QuestionDetails/>
-                <RightSidebar/>
             </div>
         </div>
     )

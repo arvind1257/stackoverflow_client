@@ -7,18 +7,27 @@ import { useDispatch, useSelector } from "react-redux"
 //import Button from "../../components/Button/Button"
 import "./Navbar.css"
 import { setCurrentUser } from "../../actions/currentUser"
+import decode from "jwt-decode"
 
 const Navbar = () => {
     const navigate = useNavigate()
     const dispatch = useDispatch()
     const user = useSelector(state => state.currentUserReducer)
-    console.log(user);
     useEffect(()=>{
+        const token = user?.token
+        if(token){
+            const decodedToken = decode(token)
+            if(decodedToken.exp * 1000 <new Date().getTime()){
+                handleLogin()
+            }
+        }
         dispatch(setCurrentUser(JSON.parse(localStorage.getItem('profile'))))
     },[dispatch])
+
     const handleLogin = () =>{
-        localStorage.removeItem('profile')
-        navigate('/Auth')
+        dispatch({type:'LOGOUT'});
+        navigate('/')
+        dispatch(setCurrentUser(null))
     }
 
     return (
@@ -28,8 +37,7 @@ const Navbar = () => {
                     <img src={logo} alt="logo" width="160"/>
                 </Link>
                 <Link to='/' className="nav-item nav-btn">About</Link>
-                <Link to='/' className="nav-item nav-btn">Products</Link>
-                <Link to='/' className="nav-item nav-btn">For Teams</Link>
+                <Link to='/' className="nav-item nav-btn">ChatBot</Link>
                 <form>
                     <input type="text" placeholder="Search..."/>
                     <img src={search} alt="search" width="18" className="search-icon"/>
@@ -46,5 +54,4 @@ const Navbar = () => {
         </nav>
     )
 }
-
 export default Navbar;

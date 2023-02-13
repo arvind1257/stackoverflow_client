@@ -1,5 +1,4 @@
 .ask-question{
-    height:97vh;
     background-color:#f1f2f3;
 }
 
@@ -23,6 +22,10 @@
 
 .ask-form-container label h4{
     margin-bottom: 0%;
+}
+
+.ask-form-container label:nth-child(1) h4{
+    margin-top: 0%;
 }
 
 .ask-form-container label p{

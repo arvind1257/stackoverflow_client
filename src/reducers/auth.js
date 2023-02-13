@@ -5,6 +5,9 @@ const authReducer = (state={data:null}, actions ) => {
             return { ...state,data: actions?.data}
         case "AUTH_ERROR" :
             return { ...state,data: actions.payload}   
+        case "LOGOUT" : 
+            localStorage.clear()
+            return { ...state,data:null}    
         default :
             return state;
     }

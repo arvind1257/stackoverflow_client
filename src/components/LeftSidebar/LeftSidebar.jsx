@@ -16,8 +16,8 @@ const LeftSidebar = () =>{
                         <img src={Globe} alt="Globe" width="30"/>
                         <p style={{paddingLeft:"10px"}}> Questions</p>
                     </NavLink>
-                    <NavLink to='/Tags' className='side-nav-links' style={{paddingLeft:"40px"}} activeClassName="active">
-                        <p style={{paddingLeft:"10px"}}> Tags</p>
+                    <NavLink to='/Posts' className='side-nav-links' style={{paddingLeft:"40px"}} activeClassName="active">
+                        <p style={{paddingLeft:"10px"}}> Posts</p>
                     </NavLink>
                     <NavLink to='/Users' className='side-nav-links' style={{paddingLeft:"40px"}} activeClassName="active"> 
                         <p style={{paddingLeft:"10px"}}> Users</p>
