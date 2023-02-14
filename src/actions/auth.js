@@ -24,3 +24,25 @@ export const logIn = (authData,navigate) => async (dispatch) => {
         console.log(err)
     }
 }
+
+export const getUsers = () => async(dispatch) =>{
+    try{
+        const {data} = await api.getUsers();
+        dispatch({type:"FETCH_ALL_USERS",payload:data})
+    }
+    catch(err){
+        console.log(err)
+    }
+}
+
+export const updateUser = (id,updateData) => async(dispatch) =>{
+    try{
+        console.log(updateData)
+        const { data } = await api.updateUser(id,updateData);
+        console.log(data)
+        dispatch(setCurrentUser(data))
+    }
+    catch(err){
+        console.log(err)
+    }
+}

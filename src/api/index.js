@@ -9,3 +9,5 @@ export const postAnswer = (id,answerData) => API.patch(`/answer/post/${id}`,answ
 export const deleteQuestion = (id) => API.delete(`/questions/delete/${id}`);
 export const deleteAnswer = (deleteData) => API.patch('/answer/delete',deleteData);
 export const voteQuestion = (voteData) => API.patch('/questions/vote',voteData);
+export const getUsers = () => API.get('/user/getAllUsers');
+export const updateUser = (id,updateData) => API.patch(`/user/update/${id}`,updateData);

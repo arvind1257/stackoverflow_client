@@ -8,6 +8,7 @@ import { useDispatch, useSelector } from "react-redux"
 import "./Navbar.css"
 import { setCurrentUser } from "../../actions/currentUser"
 import decode from "jwt-decode"
+import { getUsers } from "../../actions/auth"
 
 const Navbar = () => {
     const navigate = useNavigate()
@@ -22,6 +23,7 @@ const Navbar = () => {
             }
         }
         dispatch(setCurrentUser(JSON.parse(localStorage.getItem('profile'))))
+        dispatch(getUsers());
     },[dispatch])
 
     const handleLogin = () =>{
@@ -46,7 +48,7 @@ const Navbar = () => {
                     user===null ?
                         <Link to='/Auth' className="nav-item nav-links">Log in</Link> :
                         <>
-                            <Avatar><Link to='/' style={{color:"white",textDecoration:"none"}}>{user.name.charAt(0).toUpperCase()}</Link></Avatar>
+                            <Avatar><Link to={`/Users/${user._id}`} style={{color:"white",textDecoration:"none"}}>{user.name.charAt(0).toUpperCase()}</Link></Avatar>
                             <button className="nav-item nav-links" onClick={handleLogin}>Log out</button>
                         </>
                 }
