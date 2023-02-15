@@ -8,11 +8,9 @@ import "./HomeMainbar.css";
 const HomeMainbar = () =>{
 
     const questionsList = useSelector(state => state.questionReducer);
-    console.log(questionsList);
 
     const location = useLocation()
     const user = useSelector(state => state.currentUserReducer)
-    console.log(user);
     const navigate = useNavigate();
 
     const redirect = () =>{

@@ -5,7 +5,6 @@ import { Link } from "react-router-dom";
 import "./Users.css"
 const Users = () =>{
     const Users = useSelector((state) => state.authReducer)
-    console.log(Users.data)
     return (
         <div className="home-container-1">
             <LeftSidebar/>

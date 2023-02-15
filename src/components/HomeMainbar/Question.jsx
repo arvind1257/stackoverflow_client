@@ -3,8 +3,6 @@ import moment from "moment";
 import { Link } from "react-router-dom";
 
 const Question = ({question}) => {
-    console.log("hi")
-    console.log(question)
 
     return (
         <div className="display-question-container">

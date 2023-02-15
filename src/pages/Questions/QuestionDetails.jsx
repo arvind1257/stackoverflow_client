@@ -71,7 +71,6 @@ const QuestionDetails = () => {
                                 <div className="question-details-container-2">
                                     <div className="question-votes">
                                         <img src={upVote} alt="upVote" width="30" className="votes-icon" onClick={handleUpVote}/>
-                                        {console.log(question.upVote.length - question.downVote.length)}
                                         <p>{question.upVote.length - question.downVote.length}</p>
                                         <img src={downVote} alt="downVote" width="30" className="votes-icon" onClick={handleDownVote}/>
                                     </div>

@@ -39,7 +39,21 @@ const Navbar = () => {
                     <img src={logo} alt="logo" width="160"/>
                 </Link>
                 <Link to='/' className="nav-item nav-btn">About</Link>
-                <Link to='/' className="nav-item nav-btn">ChatBot</Link>
+                {
+                    user!==null ? <>
+                    <Link to='/ChatBot' className="nav-item nav-btn">ChatBot</Link>
+                    <Link to='/Subscription' className="nav-item nav-btn">Subscription</Link>
+                    </>
+                    :
+                    <>
+                    <button onClick={() => alert('Kindly Login First')} className="nav-item nav-btn nav-btn1">ChatBot</button>
+                    <button onClick={() => alert('Kindly Login First')} className="nav-item nav-btn nav-btn1">Subscription</button>
+                    </>
+                }
+                {
+
+                }
+                
                 <form>
                     <input type="text" placeholder="Search..."/>
                     <img src={search} alt="search" width="18" className="search-icon"/>

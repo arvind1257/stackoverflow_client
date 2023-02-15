@@ -59,7 +59,6 @@ export const deleteAnswer = (deleteData,navigate) => async(dispatch) =>{
 
 export const voteQuestion = (voteData,navigate) => async(dispatch) =>{
     try{
-        console.log(voteData)
         const { data } = await api.voteQuestion(voteData);
         dispatch(fetchAllQuestions())
     }

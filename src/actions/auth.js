@@ -5,6 +5,7 @@ export const signUp = (authData,navigate) => async (dispatch) => {
         const { data } = await api.signUp(authData)
         data.message && data.status==="Error" ?  dispatch({type:"AUTH_ERROR",payload:data}) : dispatch({type:"Auth",data})
         dispatch(setCurrentUser(JSON.parse(localStorage.getItem('profile'))))
+        dispatch(getUsers())
         data.message && data.status==="Error" ?  navigate('/Auth') : navigate('/')
     }
     catch(err)
@@ -37,9 +38,7 @@ export const getUsers = () => async(dispatch) =>{
 
 export const updateUser = (id,updateData) => async(dispatch) =>{
     try{
-        console.log(updateData)
         const { data } = await api.updateUser(id,updateData);
-        console.log(data)
         dispatch(setCurrentUser(data))
     }
     catch(err){
