@@ -7,7 +7,7 @@ import {logIn} from "../../actions/auth.js"
 import "./Auth.css";
 import OTPVerification from "./OTPVerfication";
 import { useRef } from "react";
-import emailjs from '@emailjs/browser';
+//import emailjs from '@emailjs/browser';
 
 const Auth = () => {
 

@@ -4,7 +4,7 @@ import { useParams } from "react-router-dom";
 import Avatar from "../../components/Avatar/Avatar";
 import LeftSidebar from "../../components/LeftSidebar/LeftSidebar";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { faBirthdayCake, faPen, faTimes } from "@fortawesome/free-solid-svg-icons"
+import { faBirthdayCake, faPen, faTimes} from "@fortawesome/free-solid-svg-icons"
 import moment from "moment";
 import EditProfileForm from "./EditProfileForm";
 import ProfileBio from "./ProfileBio";

@@ -11,3 +11,4 @@ export const deleteAnswer = (deleteData) => API.patch('/answer/delete',deleteDat
 export const voteQuestion = (voteData) => API.patch('/questions/vote',voteData);
 export const getUsers = () => API.get('/user/getAllUsers');
 export const updateUser = (id,updateData) => API.patch(`/user/update/${id}`,updateData);
+export const chatbotAnswer = (chatbotData) => API.post('/chatbot/answer',chatbotData);

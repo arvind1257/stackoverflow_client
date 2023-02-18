@@ -15,7 +15,7 @@ const OTPVerification = ({otp,name,email,password}) =>{
         if(!OTP){
             alert('Enter the OTP!')
         }
-        else if(OTP!=otp){
+        else if(OTP!==otp){
             alert("OTP="+typeof(OTP)+OTP)
             alert("otp="+typeof(otp)+otp)
             alert('Invalid OTP')
