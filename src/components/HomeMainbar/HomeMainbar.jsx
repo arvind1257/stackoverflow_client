@@ -5,10 +5,8 @@ import { useSelector } from "react-redux"
 
 import "./HomeMainbar.css";
 
-const HomeMainbar = () =>{
-
+const HomeMainbar = ({searchData}) =>{
     const questionsList = useSelector(state => state.questionReducer);
-
     const location = useLocation()
     const user = useSelector(state => state.currentUserReducer)
     const navigate = useNavigate();
@@ -23,7 +21,6 @@ const HomeMainbar = () =>{
         }
         
     }
-    
     return(
         <div className="main-bar">
             <div className="main-bar-header">
@@ -35,8 +32,8 @@ const HomeMainbar = () =>{
                     questionsList.data === null ?
                     <h1>Loading...</h1> : 
                     <>
-                        <p>{ questionsList.data.length } questions</p>
-                        <QuestionList questionsList={questionsList.data} />
+                        <p>{ questionsList.data.filter((item)=> item.questionTitle.toLowerCase().includes(searchData.toLowerCase())).length } questions</p>
+                        <QuestionList questionsList={questionsList.data.filter((item)=> item.questionTitle.toLowerCase().includes(searchData.toLowerCase()))} />
                     </>
                 }
             </div>

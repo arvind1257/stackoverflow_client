@@ -3,6 +3,8 @@ const currentUserReducer = (state=null,action) =>{
     {
         case 'CHATBOT_ANSWER': 
             return action.payload;
+        case 'CLEAR_ANSWER' :
+            return action.payload;
         default : 
             return state;
     }

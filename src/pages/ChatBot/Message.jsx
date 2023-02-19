@@ -5,7 +5,6 @@ import { faPaperPlane } from "@fortawesome/free-solid-svg-icons"
 import ReactScrollableFeed from "react-scrollable-feed"
 import { useDispatch, useSelector } from "react-redux";
 import { chatbot } from "../../actions/chatbot.js"
-import ChatMess from "./ChatMess";
 const Message = ({user}) =>{
     const [message , setMessage] = useState('');
     const dispatch = useDispatch();
@@ -86,8 +85,9 @@ const Message = ({user}) =>{
             no:Chat.message.length+1,
             status:"questions",
             type:"bot",
-            mess:botAnswer.bot.trim().replace('/\n/g', "<br />")
+            mess:botAnswer.bot.trim()
         })
+        dispatch({type:"CLEAR_ANSWER",payload:null})
         setChat(content)
         localStorage.setItem('chat',JSON.stringify(content))
     }
@@ -99,9 +99,7 @@ const Message = ({user}) =>{
             <ReactScrollableFeed>
             { 
             Chat!==null && Chat.message.map((message) => ( 
-            //    parseInt(message.no)!==Chat.message.length ?
-                <ChatMessage message={message} User={User}/> 
-            //    <ChatMess message={message}/>        
+                <ChatMessage message={message} User={User}/>     
             ))
             }
             </ReactScrollableFeed>

@@ -1,4 +1,4 @@
-import React, { useEffect } from "react"
+import React, { useEffect, useState } from "react"
 import { Link,useNavigate } from "react-router-dom"
 import logo from "../../assests/blacklogo.png"
 import search from '../../assests/search-solid.svg'
@@ -10,9 +10,10 @@ import { setCurrentUser } from "../../actions/currentUser"
 import decode from "jwt-decode"
 import { getUsers } from "../../actions/auth"
 
-const Navbar = () => {
+const Navbar = ({searchValue}) => {
     const navigate = useNavigate()
     const dispatch = useDispatch()
+    const [search1,setSearch] = useState('')
     const user = useSelector(state => state.currentUserReducer)
     useEffect(()=>{
         const token = user?.token
@@ -31,6 +32,11 @@ const Navbar = () => {
         dispatch({type:'LOGOUT'});
         navigate('/')
         dispatch(setCurrentUser(null))
+    }
+
+    const handleChange =(e) =>{
+        setSearch(e.target.value)
+        searchValue(e.target.value)
     }
 
     return (
@@ -56,7 +62,7 @@ const Navbar = () => {
                 }
                 
                 <form>
-                    <input type="text" placeholder="Search..."/>
+                    <input value={search1} onChange={(e)=>handleChange(e)} type="text" placeholder="Search..."/>
                     <img src={search} alt="search" width="18" className="search-icon"/>
                 </form>
                 {
