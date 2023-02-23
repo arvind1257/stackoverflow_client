@@ -9,6 +9,7 @@ import Users from "./pages/Users/Users";
 import UserProfile from "./pages/Users/UserProfile";
 import ChatBot from "./pages/ChatBot/chatBot"
 import Posts from "./pages/Posts/Posts"
+import Subscription from "./pages/Subscription/Subscription";
 
 const AllRoutes = ({searchData}) => {
     return(
@@ -22,6 +23,7 @@ const AllRoutes = ({searchData}) => {
             <Route path='/ChatBot' element={<ChatBot />}/>  
             <Route path='/Users' element={<Users searchData={searchData}/>}/>  
             <Route path='/Users/:id' element={<UserProfile/>}/>
+            <Route path='/Subscription' element={<Subscription/>}/>
         </Routes>
     )
 }

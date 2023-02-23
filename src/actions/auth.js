@@ -4,7 +4,7 @@ export const signUp = (authData,navigate) => async (dispatch) => {
     try{
         const { data } = await api.signUp(authData)
         data.message && data.status==="Error" ?  dispatch({type:"AUTH_ERROR",payload:data}) : dispatch({type:"Auth",data})
-        dispatch(setCurrentUser(JSON.parse(localStorage.getItem('profile'))))
+        dispatch(setCurrentUser(JSON.parse(localStorage.getItem('profile')).result))
         dispatch(getUsers())
         data.message && data.status==="Error" ?  navigate('/Auth') : navigate('/')
     }
@@ -18,7 +18,7 @@ export const logIn = (authData,navigate) => async (dispatch) => {
     try{
         const { data } = await api.logIn(authData)
         data.message && data.status==="Error" ?  dispatch({type:"AUTH_ERROR",payload:data}) : dispatch({type:"Auth",data})
-        dispatch(setCurrentUser(JSON.parse(localStorage.getItem('profile'))))
+        dispatch(setCurrentUser(JSON.parse(localStorage.getItem('profile')).result))
         data.message && data.status==="Error" ?  navigate('/Auth') : navigate('/')
     }
     catch(err){
@@ -38,8 +38,8 @@ export const getUsers = () => async(dispatch) =>{
 
 export const updateUser = (id,updateData) => async(dispatch) =>{
     try{
-        const { data } = await api.updateUser(id,updateData);
-        dispatch(setCurrentUser(data))
+        await api.updateUser(id,updateData);
+        dispatch(setCurrentUser(JSON.parse(localStorage.getItem('profile')).result))
     }
     catch(err){
         console.log(err)

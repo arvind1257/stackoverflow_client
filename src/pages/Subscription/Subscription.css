@@ -1,0 +1,45 @@
+.subscription-note{
+    margin:50px 0px;
+    font-size: 25px;
+}
+
+.subscription-plans{
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.subscription-plan{
+    padding:40px 20px;
+    width:20%;
+    background-color: #fff5f5;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.subscription-plan p{
+    color:rgb(102, 103, 103);
+}
+
+.subscription-hower:hover{
+    background-color: #fbeded;
+    transform: scale(0.95);
+
+}
+
+.subscription-plan h3{
+    color:rgb(0, 122, 198);
+}
+
+.free{
+    border:5px groove orange;
+}
+
+.silver{
+    border:5px groove silver;
+}
+
+.gold{
+    border:5px groove gold;
+}

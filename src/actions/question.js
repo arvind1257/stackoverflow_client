@@ -1,9 +1,10 @@
 import * as api from "../api"
-
+import {setCurrentUser} from "./currentUser.js"
 export const Ask = (questionData,navigate) => async (dispatch) => {
     try{
         const {data} = await api.postQuestion(questionData)
         dispatch({type:"POST_QUESTION",payload:data});
+        dispatch(setCurrentUser(JSON.parse(localStorage.getItem('profile')).result));
         dispatch(fetchAllQuestions())
         navigate('/')
     }

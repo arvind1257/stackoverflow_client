@@ -23,7 +23,7 @@ const Navbar = ({searchValue}) => {
                 handleLogin()
             }
         }
-        dispatch(setCurrentUser(JSON.parse(localStorage.getItem('profile'))))
+        dispatch(setCurrentUser(JSON.parse(localStorage.getItem('profile')).result))
         dispatch(getUsers());
         // eslint-disable-next-line
     },[dispatch])
@@ -31,7 +31,7 @@ const Navbar = ({searchValue}) => {
     const handleLogin = () =>{
         dispatch({type:'LOGOUT'});
         navigate('/')
-        dispatch(setCurrentUser(null))
+        dispatch({type:"FETCH_CURRENT_USER",payload:null})
     }
 
     const handleChange =(e) =>{

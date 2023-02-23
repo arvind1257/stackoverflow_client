@@ -17,7 +17,13 @@ const HomeMainbar = ({searchData}) =>{
             navigate('/Auth')
         }
         else{
-            navigate('/AskQuestion')
+            if(user.Questions.noOfPost>0 || user.Questions.noOfPost===-1){
+                navigate('/AskQuestion')
+            }
+            else{
+                alert('You have crossed you limit today.\nYou can post the questions from tomorrow\nor else,You can subscribe to higher subscription\n')
+            }
+            
         }
         
     }
@@ -25,6 +31,7 @@ const HomeMainbar = ({searchData}) =>{
         <div className="main-bar">
             <div className="main-bar-header">
                 { location.pathname==='/' ? <h1>Top Questions</h1> : <h1>All Questions</h1>}
+                
                 <button onClick={() => redirect()} className="ask-btn">Ask Question</button>
             </div>
             <div>

@@ -30,7 +30,12 @@ const AskQuestion = () => {
     return (
         <div className="ask-question">
             <div className="ask-ques-container">
-                <h1>Ask a Public Question</h1>
+                <h1>
+                    Ask a Public Question
+                    {
+                        user!==null && user.type!=='Gold' && <span className="remainder">&nbsp;({user.Questions.noOfPost} question remaining for today)</span>
+                    }
+                </h1>
                 <form onSubmit={handleSubmit}>
                     <div className="ask-form-container">
                         <label htmlFor="ask-ques-title">
