@@ -3,6 +3,7 @@ import authReducer from "./auth.js";
 import currentUserReducer from "./currentUser.js";
 import questionReducer from "./questions.js"
 import chatbotReducer from "./chatbot.js"
+import friendRequestReducer from "./request.js"
 export default combineReducers({
-    authReducer,currentUserReducer,questionReducer,chatbotReducer
+    authReducer,currentUserReducer,questionReducer,chatbotReducer,friendRequestReducer
 })

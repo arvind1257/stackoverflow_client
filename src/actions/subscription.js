@@ -1,13 +1,10 @@
 import * as api from "../api"
 import {setCurrentUser} from "./currentUser"
 export const postSubscription = (subscriptionData) => async(dispatch) =>{
-    console.log(subscriptionData)
     try{
         const {data} = await api.postSubscription(subscriptionData);
-        console.log(data)
         dispatch({type:"POST_SUBSCRIPTION",payload:data})
         dispatch(setCurrentUser(JSON.parse(localStorage.getItem('profile')).result))
-
     }
     catch(err){
         console.log(err)

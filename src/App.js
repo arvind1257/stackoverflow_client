@@ -6,6 +6,7 @@ import AllRoutes from './AllRoutes';
 import { useDispatch } from "react-redux"
 import { fetchAllQuestions } from './actions/question';
 import { getUsers } from './actions/auth';
+import { requestGet } from './actions/request';
 function App() {
 
   const [data,setData] = useState('')
@@ -13,10 +14,11 @@ function App() {
   useEffect(() => {
     dispatch(fetchAllQuestions())
     dispatch(getUsers())
+    if(JSON.parse(localStorage.getItem('profile')).result)
+    dispatch(requestGet(JSON.parse(localStorage.getItem('profile')).result))
   },[dispatch])
 
   const searchValue = (data1) =>{
-    console.log("App.js="+data1)
     setData(data1)
   }
 

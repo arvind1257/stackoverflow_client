@@ -1,9 +1,14 @@
-import React from "react";
-import { useSelector } from "react-redux";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import LeftSidebar from "../../components/LeftSidebar/LeftSidebar";
 import { Link } from "react-router-dom";
+import { getUsers } from "../../actions/auth";
 import "./Users.css"
 const Users = ({searchData}) =>{
+    const dispatch = useDispatch()
+    useEffect(() => {
+        dispatch(getUsers())
+      },[dispatch])
     const Users = useSelector((state) => state.authReducer)
     return (
         <div className="home-container-1">

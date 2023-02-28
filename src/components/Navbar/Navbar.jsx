@@ -23,6 +23,7 @@ const Navbar = ({searchValue}) => {
                 handleLogin()
             }
         }
+        if(JSON.parse(localStorage.getItem('profile')).result)
         dispatch(setCurrentUser(JSON.parse(localStorage.getItem('profile')).result))
         dispatch(getUsers());
         // eslint-disable-next-line

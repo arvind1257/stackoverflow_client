@@ -15,3 +15,7 @@ export const deleteAnswer = (deleteData) => API.patch('/answer/delete',deleteDat
 export const postSubscription = (subscriptionData) => API.post('/subscription/post',subscriptionData)
 export const getSubscription = () => API.get('/subscription/get')
 export const chatbotAnswer = (chatbotData) => API.post('/chatbot/answer',chatbotData)
+export const requestSend = (requestData) => API.post('/request/send',requestData)
+export const requestGet = (id) => API.get(`/request/get/${id}`)
+export const requestDelete = (id) => API.delete(`/request/delete/${id}`)
+export const requestAccept = (requestData) => API.patch('/request/accept',requestData)

@@ -1,0 +1,24 @@
+.friendList-container{
+    padding:5px 0px;
+    display:grid;
+    grid-template-columns: repeat(auto-fill,minmax(200px,1fr));
+    gap:30px;
+}
+
+.friend-profile-link{
+    display: flex;
+    align-items:center;
+    justify-content: flex-start;
+    text-decoration: none;
+    color:black;
+}
+
+.friend-profile-link h3{
+    padding:10px 13px;
+    background-color: #d3d3d3;
+    border-radius: 50%;
+}
+
+.friend-profile-link h5{
+    margin:0px 10px;
+}

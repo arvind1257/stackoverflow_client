@@ -91,7 +91,6 @@ const Message = ({user}) =>{
         setChat(content)
         localStorage.setItem('chat',JSON.stringify(content))
     }
-    console.log(botAnswer)
     return (
         <div className="chatbot-container-1">
             <form>
