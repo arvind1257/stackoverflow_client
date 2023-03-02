@@ -19,20 +19,13 @@ const Friends = ({searchData}) =>{
                 <h1 style={{fontWeight:"500"}}>Friend Request : </h1>
                 <div className="friendList-container">
                 {
-                    Users.data && requestList!==null &&<>
-                    {
-                        console.log(Users.data.filter((user) => { if(requestList.data.filter((item) => item.fromId===user._id).length) return true; else return false;  }).length)
-                    }
-                    </>
-                }
-                {
-                    Users.data && requestList!==null && Users.data.filter((user) => { if(requestList.data.filter((item) => item.fromId===user._id).length) return true; else return false;  }).length>=1 ? 
+                    currentUser!=null && Users.data && requestList!==null && Users.data.filter((user) => { if(requestList.data.filter((item) => item.fromId===user._id && user._id!==currentUser._id).length) return true; else return false;  }).length>=1 ? 
                     Users.data.map((user) => (<>
                         {
                             requestList.data.map((item) => (
                                 <>
                                 {
-                                    user._id===item.fromId && 
+                                    user._id===item.fromId && user._id!==currentUser._id &&
                                     <Link to={`/Users/${user._id}`} className="friend-profile-link">
                                         <h3>{user.name.charAt(0).toUpperCase()}</h3>
                                         <h5>{user.name}</h5>
@@ -47,9 +40,10 @@ const Friends = ({searchData}) =>{
                 <h1 style={{fontWeight:"500"}}>Friends : </h1>
                 <div className="friendList-container">
                 {
-                    Users.data && currentUser!==null ? Users.data.map((user) => (<>
+                    Users.data && currentUser!==null && currentUser.friends && Users.data.filter((user) => { if(currentUser.friends.filter((item) => item.userId===user._id ).length) return true; else return false;  }).length>=1 ? 
+                    Users.data.map((user) => (<>
                         {
-                            currentUser.friends && currentUser.friends.map((item) => (
+                            currentUser.friends.map((item) => (
                                 <>
                                 {
                                     user._id===item.userId && 

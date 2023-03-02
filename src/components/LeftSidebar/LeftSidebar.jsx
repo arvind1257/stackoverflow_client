@@ -7,22 +7,22 @@ const LeftSidebar = () =>{
     return(
         <div className="left-sidebar">
             <div className="side-nav">
-                <NavLink to='/' className='side-nav-links' activeClassName="active">
+                <NavLink to='/' className='side-nav-links' activeclass="active">
                     <p>Home</p>
                 </NavLink>
                 <div className="side-nav-div">
                     <div><p>Public</p></div>
-                    <NavLink to="/Questions" className='side-nav-links' activeClassName="active">
+                    <NavLink to="/Questions" className='side-nav-links' activeclass="active">
                         <img src={Globe} alt="Globe" width="30"/>
                         <p style={{paddingLeft:"10px"}}> Questions</p>
                     </NavLink>
-                    <NavLink to='/Posts' className='side-nav-links' style={{paddingLeft:"40px"}} activeClassName="active">
+                    <NavLink to='/Posts' className='side-nav-links' style={{paddingLeft:"40px"}} activeclass="active">
                         <p style={{paddingLeft:"10px"}}> Posts</p>
                     </NavLink>
-                    <NavLink to='/Users' className='side-nav-links' style={{paddingLeft:"40px"}} activeClassName="active"> 
+                    <NavLink to='/Users' className='side-nav-links' style={{paddingLeft:"40px"}} activeclass="active"> 
                         <p style={{paddingLeft:"10px"}}> Users</p>
                     </NavLink>
-                    <NavLink to='/Friends' className='side-nav-links' style={{paddingLeft:"40px"}} activeClassName="active"> 
+                    <NavLink to='/Friends' className='side-nav-links' style={{paddingLeft:"40px"}} activeclass="active"> 
                         <p style={{paddingLeft:"10px"}}> Friends</p>
                     </NavLink>
                 </div>

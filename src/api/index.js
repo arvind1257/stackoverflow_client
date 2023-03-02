@@ -19,3 +19,8 @@ export const requestSend = (requestData) => API.post('/request/send',requestData
 export const requestGet = (id) => API.get(`/request/get/${id}`)
 export const requestDelete = (id) => API.delete(`/request/delete/${id}`)
 export const requestAccept = (requestData) => API.patch('/request/accept',requestData)
+export const requestRemove = (requestData) => API.patch('/request/remove',requestData)
+export const uploadPosts = (postData) => API.post('/posts/upload',postData)
+export const getPosts = () => API.get('/posts/get')
+export const setPostlikes = (postData) => API.patch('/posts/likes',postData)
+export const postDelete = (id) => API.delete(`/posts/delete/${id}`)

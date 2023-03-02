@@ -9,6 +9,8 @@ const friendRequestReducer = (state=null,action) =>{
             return state;
         case 'FRIEND_REQUEST_ACCEPT':
             return state;
+        case 'FRIEND_REQUEST_REMOVE':
+            return state;
         default : 
             return state;
     }

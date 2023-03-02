@@ -94,7 +94,7 @@ const QuestionDetails = () => {
                                             </div>
                                             <div>
                                                 <p>asked {moment(question.askedOn).fromNow()}</p>
-                                                <Link to={`/User/${question.userId}`} className="user-link" style={{color:"#0086d8"}}>
+                                                <Link to={`/Users/${question.userId}`} className="user-link" style={{color:"#0086d8"}}>
                                                     <Avatar>{question.userPosted.charAt(0).toUpperCase()}</Avatar>
                                                     <div>
                                                         {question.userPosted}

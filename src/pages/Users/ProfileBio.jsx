@@ -1,6 +1,11 @@
 import React from "react";
+import { useSelector } from "react-redux"
 import "./Users.css"
+import DisplayPost from "./DisplayPost"
+
 const ProfileBio = ({currentProfile}) =>{
+    const posts = useSelector((state)=>state.postsReducer)
+    console.log(posts)
     return (
         <div>
             <div>
@@ -30,6 +35,23 @@ const ProfileBio = ({currentProfile}) =>{
                     <p>No bio found</p>
                 )
             }
+            </div>
+            <div>
+            <h4>Posts</h4>
+            {
+                posts && posts!==null ? Object.values(posts).filter((item)=>item.userId===currentProfile._id).length>=1 ? (
+                    <>{
+                        Object.values(posts).filter((item)=> item.userId===currentProfile._id).map((item)=>(
+                            <DisplayPost post={item}/>
+                        ))
+                    }</>
+                ) : (
+                    <p>No Post Found</p>
+                )
+                :
+                <h1>Loading....</h1>
+            }
+                
             </div>
         </div>
     )

@@ -8,7 +8,8 @@ import { faBirthdayCake, faPen, faTimes, faCheck } from "@fortawesome/free-solid
 import moment from "moment";
 import EditProfileForm from "./EditProfileForm";
 import ProfileBio from "./ProfileBio";
-import { requestSend,requestDelete, requestAccept } from "../../actions/request";
+import { requestSend,requestDelete, requestAccept,requestRemove } from "../../actions/request";
+import AddPost from "./AddPost";
 
 
 
@@ -18,6 +19,7 @@ const UserProfile = () =>{
     const currentUser = useSelector((state) => state.currentUserReducer)
     const requestList = useSelector((state) => state.friendRequestReducer)
     const [Switch,setSwitch] = useState(false)
+    const [Switch1,setSwitch1] = useState(false)
     const dispatch = useDispatch()
 
     const handleFriend = (fromId,toId) => {
@@ -44,6 +46,14 @@ const UserProfile = () =>{
             return true;
         })      
     }
+
+    const handleRemove = (fromId) =>{
+        dispatch(requestRemove({fromId,toId:id}));         
+    }
+
+    const back = () =>{
+        setSwitch1(false)
+    }
     
     return(
         <div className="home-container-1">
@@ -65,16 +75,29 @@ const UserProfile = () =>{
                         </div>
                         <div style={{display:"flex",flexDirection:"column"}}>
                             {
-                            currentUser!==null && currentUser._id===id && (
-                                <button onClick={() => setSwitch(!Switch)} className="edit-profile-btn">
+                            currentUser!==null && currentUser._id===id && (<>
+                                
                                     {
-                                        Switch ? (<>
+                                        Switch ? (
+                                        <button onClick={() => setSwitch(false)} className="edit-profile-btn">
                                             <FontAwesomeIcon icon={faTimes}/> Cancel Edit
-                                        </>) : (<>
+                                        </button>
+                                        ) : (
+                                        <button onClick={() =>{if(!Switch1) setSwitch(true)}} className="edit-profile-btn">
                                             <FontAwesomeIcon icon={faPen}/> Edit Profile
-                                        </>)
+                                        </button>
+                                        )
                                     }
-                                </button>
+                                    {
+                                        Switch1 ? (
+                                        <button onClick={() => setSwitch1(false)} className="edit-profile-btn">
+                                            <FontAwesomeIcon icon={faTimes}/> Cancel Post
+                                        </button>) : 
+                                        (<button onClick={() =>{if(!Switch) setSwitch1(true)}} className="edit-profile-btn">
+                                            <FontAwesomeIcon icon={faPen}/> Add Post
+                                        </button>)
+                                    }
+                                </>
                             )    
                             }
                             {
@@ -99,7 +122,7 @@ const UserProfile = () =>{
                                         <>
                                         {
                                         currentUser.friends.filter((user) => user.userId===id).length>=1 ? <>{
-                                        <button onClick={() => handleFriend(currentUser._id,user._id)} className="edit-profile-btn">
+                                        <button onClick={() => handleRemove(currentUser._id)} className="edit-profile-btn">
                                             <FontAwesomeIcon icon={faTimes}/> Remove Friend
                                         </button>
                                         }
@@ -120,11 +143,13 @@ const UserProfile = () =>{
                         </div>
                         <>
                         {
-                            Switch ? (
-                                <EditProfileForm currentUser={currentUser}/>
-                            ) : (
-                                <ProfileBio currentProfile={user}/>
-                            )
+                            Switch && <EditProfileForm currentUser={currentUser}/>
+                        }
+                        {
+                            Switch1 && <AddPost currentUser={currentUser} back={()=>back()}/>
+                        }
+                        {
+                            !Switch && !Switch1 && <ProfileBio currentProfile={user}/>
                         }
                         </>
                     </section>

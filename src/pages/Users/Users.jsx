@@ -18,7 +18,7 @@ const Users = ({searchData}) =>{
                 <div className="userList-container">
                 {
                     Users.data ? Users.data.filter((item)=> item.name.toLowerCase().includes(searchData.toLowerCase())).map((user) => (
-                        <Link to={`/Users/${user._id}`} className="user-profile-link">
+                        <Link key={user._id} to={`/Users/${user._id}`} className="user-profile-link">
                             <h3>{user.name.charAt(0).toUpperCase()}</h3>
                             <h5>{user.name}</h5>
                         </Link>

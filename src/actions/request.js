@@ -34,11 +34,23 @@ export const requestDelete = (id) => async(dispatch) =>{
 }
 
 export const requestAccept = (requestData) => async(dispatch) =>{
-    console.log(requestData)
     try{
         const {data} = await api.requestAccept(requestData)
-        console.log(data)
         dispatch({type:"FRIEND_REQUEST_ACCEPT",payload:data})
+        dispatch(requestGet(JSON.parse(localStorage.getItem('profile')).result))
+        dispatch(setCurrentUser(JSON.parse(localStorage.getItem('profile')).result))
+    }
+    catch(err){
+        console.log(err)
+    }
+}
+
+export const requestRemove = (requestData) => async(dispatch) =>{
+    console.log(requestData)
+    try{
+        const {data} = await api.requestRemove(requestData)
+        console.log(data)
+        dispatch({type:"FRIEND_REQUEST_REMOVE",payload:data})
         dispatch(requestGet(JSON.parse(localStorage.getItem('profile')).result))
         dispatch(setCurrentUser(JSON.parse(localStorage.getItem('profile')).result))
     }

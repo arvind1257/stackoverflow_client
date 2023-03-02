@@ -101,5 +101,58 @@
     background-color:#0074cc;
 }
 
+.post-like-button,.post-delete-button{
+    padding:0px;
+    background-color: transparent;
+    border:none;
+    font-size:17px;
+    transition: 0.2s;
+}
+
+.post-like-button:hover{
+    transform: scale(1.2);
+}
+
+.post-delete-button:hover{
+    transform: scale(1.05);
+}
+
+.Post-container{
+    width:80%;
+    margin:10px;
+    margin-left: 0px;
+    padding: 20px;
+    border: solid 1px #dbd9d9;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+}
+
+.image-container img,.image-container video{
+    max-width:80%;
+    max-height:300px;
+}
+
+.control-container-2{
+    display: flex;
+    align-items:flex-start;
+    justify-content: flex-start;
+}
+
+.control-container{
+    display: flex;
+    justify-content: space-between;
+}
+
+.post-controls{
+    margin:5px;
+    display: flex;
+    align-items: center;
+
+}
+
+.post-icon{
+    color: #009dff;
+}
 
 
