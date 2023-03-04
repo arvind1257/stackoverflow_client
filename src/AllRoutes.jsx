@@ -11,6 +11,7 @@ import ChatBot from "./pages/ChatBot/chatBot"
 import Posts from "./pages/Posts/Posts"
 import Subscription from "./pages/Subscription/Subscription";
 import Friends from "./pages/friends/Friends";
+import ViewPost from "./pages/Posts/ViewPost";
 
 const AllRoutes = ({searchData}) => {
     return(
@@ -26,6 +27,7 @@ const AllRoutes = ({searchData}) => {
             <Route path='/Users/:id' element={<UserProfile/>}/>
             <Route path='/Subscription' element={<Subscription/>}/>
             <Route path='/Friends' element={<Friends/>}/>
+            <Route path='/Post/:id' element={<ViewPost/>}/>
         </Routes>
     )
 }

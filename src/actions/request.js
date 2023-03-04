@@ -1,7 +1,6 @@
 import * as api from "../api"
 import {setCurrentUser} from "./currentUser"
 export const requestSend = (requestData) => async(dispatch) =>{
-    console.log(requestData)
     try{
         const {data} = await api.requestSend(requestData)
         dispatch({type:"FRIEND_REQUEST_SEND",payload:data})
@@ -46,10 +45,8 @@ export const requestAccept = (requestData) => async(dispatch) =>{
 }
 
 export const requestRemove = (requestData) => async(dispatch) =>{
-    console.log(requestData)
     try{
         const {data} = await api.requestRemove(requestData)
-        console.log(data)
         dispatch({type:"FRIEND_REQUEST_REMOVE",payload:data})
         dispatch(requestGet(JSON.parse(localStorage.getItem('profile')).result))
         dispatch(setCurrentUser(JSON.parse(localStorage.getItem('profile')).result))

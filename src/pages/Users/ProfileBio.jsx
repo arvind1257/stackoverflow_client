@@ -1,11 +1,10 @@
 import React from "react";
 import { useSelector } from "react-redux"
 import "./Users.css"
-import DisplayPost from "./DisplayPost"
+import DisplayPost from "../Posts/DisplayPost"
 
 const ProfileBio = ({currentProfile}) =>{
     const posts = useSelector((state)=>state.postsReducer)
-    console.log(posts)
     return (
         <div>
             <div>
@@ -42,7 +41,7 @@ const ProfileBio = ({currentProfile}) =>{
                 posts && posts!==null ? Object.values(posts).filter((item)=>item.userId===currentProfile._id).length>=1 ? (
                     <>{
                         Object.values(posts).filter((item)=> item.userId===currentProfile._id).map((item)=>(
-                            <DisplayPost post={item}/>
+                            <DisplayPost key={item._id} post={item}/>
                         ))
                     }</>
                 ) : (

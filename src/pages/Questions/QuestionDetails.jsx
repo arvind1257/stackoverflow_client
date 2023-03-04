@@ -49,11 +49,17 @@ const QuestionDetails = () => {
     }
 
     const handleUpVote = () => {
+        if(User!==null)
         dispatch(voteQuestion({id:id,vote:'upVote',userId:User._id},navigate))
+        else
+        alert("Kindly login first to vote the question")
     }
 
     const handleDownVote = () => {
+        if(User!==null)
         dispatch(voteQuestion({id:id,vote:'downVote',userId:User._id},navigate))
+        else
+        alert("Kindly login first to vote the question")
     }
 
     return (
@@ -124,10 +130,16 @@ const QuestionDetails = () => {
                                 <p>Browser other questions tagged 
                                     {
                                     question.questionTags.map((tag)=>(
-                                        <Link to='/Tags' key={tag} className="ans-tags"> {tag} </Link>
+                                        <Link key={tag} className="ans-tags"> {tag} </Link>
                                     ))}
                                     or&ensp;
-                                    <Link to="/AskQuestion" style={{textDecoration:"none",color:"#009dff"}}>ask your own question.</Link></p>
+                                    {
+                                        User!==null ? 
+                                    <Link to="/AskQuestion" style={{textDecoration:"none",color:"#009dff"}}>ask your own question.</Link>
+                                    :
+                                    <span style={{color:"#009dff",cursor:"pointer"}} onClick={()=>alert('Kindly login to ask questions')}>ask your own question.</span>
+                                    }
+                                </p>
                             </section>
                         </div>
                     ))

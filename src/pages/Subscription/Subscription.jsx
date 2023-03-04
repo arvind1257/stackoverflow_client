@@ -47,8 +47,7 @@ const Subscription = () => {
             }
         }
         else{
-            handleClick(click)
-            alert('error')
+            alert('Kindly login to make the payment')
         }
     }
 
@@ -57,31 +56,31 @@ const Subscription = () => {
             <LeftSidebar/>
             <div className="home-container-2">
                 {
-                User!==null && <>    
+                <>    
                 <p className="subscription-note">Your currently using&nbsp;
                 {
-                    User.type==='FREE' && <>Free Subscription and you can post only one question </>
+                    (User===null || User.type==='FREE') && <>Free Subscription and you can post only one question </>
                 }
                 {
-                    User.type==='Silver' && <>Silver Subscription and you can post only five questions </>
+                    User!==null && User.type==='Silver' && <>Silver Subscription and you can post only five questions </>
                 }
                 {
-                    User.type==='Gold' && <>Gold Subscription and you can post any number of questions </>
+                    User!==null && User.type==='Gold' && <>Gold Subscription and you can post any number of questions </>
                 }
                     per day<br/>The following are the Subscription plans : 
                 </p>
                 <div className="subscription-plans">
-                    <button onClick={() => handleClick('FREE')} className={User.type==="FREE" ?"subscription-plan free":"subscription-plan subscription-hower free"}>
+                    <button onClick={() => handleClick('FREE')} className={User===null || User.type==='FREE' ?"subscription-plan free":"subscription-plan subscription-hower free"}>
                         <h2>FREE SUBSCRIPTION</h2>
                         <h3>FREE</h3>
                         <p>Free Plan can post only 1 question a day</p>
                     </button>
-                    <button onClick={() => handleClick('Silver')} className={User.type==="Silver" ?"subscription-plan silver":"subscription-plan subscription-hower silver"}>
+                    <button onClick={() => handleClick('Silver')} className={User!==null && User.type==="Silver" ?"subscription-plan silver":"subscription-plan subscription-hower silver"}>
                         <h2>SILVER SUBSCRIPTION</h2>
                         <h3>₹100 per month</h3>
                         <p>Silver plan can post 5 questions a day</p>
                     </button>
-                    <button onClick={() => handleClick('Gold')} className={User.type==="Gold" ?"subscription-plan gold":"subscription-plan subscription-hower gold"}>
+                    <button onClick={() => handleClick('Gold')} className={User!==null && User.type==="Gold" ?"subscription-plan gold":"subscription-plan subscription-hower gold"}>
                         <h2>GOLD SUBSCRIPTION</h2>
                         <h3>₹1000 per month</h3>
                         <p>Gold plan can post unlimited questions a day</p>

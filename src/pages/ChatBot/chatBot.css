@@ -26,10 +26,29 @@
     border-radius: 20px;
     background-color: bisque;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
 }
 
+.bot-message-control{
+    width:100%;
+    display: flex;
+    font-size: 12px;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.bot-control-btn{
+    border:none;
+    transition: 0.3s;
+    text-decoration: underline;
+    background-color: initial;
+}
+
+.bot-control-btn:hover{
+    transform: scale(1.1);
+}
 
 .bot-avatar{
     display: flex;

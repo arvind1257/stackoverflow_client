@@ -15,9 +15,7 @@ const OTPVerification = ({otp,name,email,password}) =>{
         if(!OTP){
             alert('Enter the OTP!')
         }
-        else if(OTP!==otp){
-            alert("OTP="+typeof(OTP)+OTP)
-            alert("otp="+typeof(otp)+otp)
+        else if(OTP!=otp){
             alert('Invalid OTP')
         }
         else{
@@ -30,7 +28,7 @@ const OTPVerification = ({otp,name,email,password}) =>{
             <h1>Email Confirmation</h1>
             
             <form onSubmit={handleSubmit}>
-            <p style={{color: "rgb(102, 103, 103)",fontSize: "13px"}}>We sent the OTP mail to {email} <br/>Check your inbox to activate your account.</p>
+            <p style={{color: "rgb(102, 103, 103)",fontSize: "13px"}}>We sent the OTP mail to {email} <br/>Check your inbox to activate your account.<br/>And kindly don't refresh this page</p>
                 <label htmlFor="user">
                     <h4>Enter the OTP</h4>
                     <input type="number" name="otp" onChange={(e) => setOTP(e.target.value)}/>

@@ -11,6 +11,22 @@ export const uploadPosts = (postData) => async(dispatch) =>{
     }
 }
 
+export const uploadMedia = (postData,formData,head) => async(dispatch) =>{
+    try{
+        const {data} = await api.uploadMedia(formData,head)
+        if(data===""){
+            postData.file=data
+            dispatch(uploadPosts(postData))
+        }
+        else{
+            alert(data)
+        }
+    }
+    catch(err){
+        console.log(err)
+    }
+}
+
 export const getPosts = () => async(dispatch) =>{
     try{
         const {data} = await api.getPosts()
@@ -23,7 +39,7 @@ export const getPosts = () => async(dispatch) =>{
 
 export const setPostlikes = (postData) => async(dispatch) =>{
     try{
-        const {data} = await api.setPostlikes(postData)
+        await api.setPostlikes(postData)
         dispatch(getPosts())
     }
     catch(err){
@@ -33,8 +49,7 @@ export const setPostlikes = (postData) => async(dispatch) =>{
 
 export const postDelete = (id) => async(dispatch) =>{
     try{
-        const {data} = await api.postDelete(id)
-        console.log(data)
+        await api.postDelete(id)
         dispatch(getPosts())
     }
     catch(err){

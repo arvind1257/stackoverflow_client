@@ -9,7 +9,7 @@ import moment from "moment";
 import EditProfileForm from "./EditProfileForm";
 import ProfileBio from "./ProfileBio";
 import { requestSend,requestDelete, requestAccept,requestRemove } from "../../actions/request";
-import AddPost from "./AddPost";
+import AddPost from "../Posts/AddPost";
 
 
 
@@ -60,9 +60,8 @@ const UserProfile = () =>{
             <LeftSidebar/>
             <div className="home-container-2">
                 {
-                Users.data!==null && Users.data.map((user) =>(
-                    user._id===id ? 
-                    <section>
+                Users.data!==null && Users.data.filter((user)=>{return user._id===id}).map((user) =>(
+                    <section key={user._id}>
                         <div className="user-details-container">
                         <div className="user-details">
                             <Avatar>
@@ -153,7 +152,6 @@ const UserProfile = () =>{
                         }
                         </>
                     </section>
-                    : <></>
                 )) 
                 }
                 

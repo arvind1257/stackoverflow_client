@@ -23,7 +23,7 @@ const DisplayAnswer = ({question}) =>{
     }
 
     const handleDelete = (answerId,noOfAnswers) => {
-        dispatch(deleteAnswer({id,answerId,noOfAnswers}),navigate)
+        dispatch(deleteAnswer({id,answerId,noOfAnswers:noOfAnswers-1}),navigate)
     }
 
     return (
@@ -42,7 +42,7 @@ const DisplayAnswer = ({question}) =>{
                             </div>
                             <div>
                                 <p>answered {moment(ans.answeredOn).fromNow()}</p>
-                                <Link to={`/User/${ans.userId}`} className="user-link" style={{color:"#0086d8"}}>
+                                <Link to={`/Users/${ans.userId}`} className="user-link" style={{color:"#0086d8"}}>
                                     <Avatar>{ans.userAnswered.charAt(0).toUpperCase()}</Avatar>
                                     <div>
                                         {ans.userAnswered}

@@ -41,6 +41,10 @@ const Navbar = ({searchValue}) => {
         searchValue(e.target.value)
     }
 
+    const handleClick = () =>{
+        navigate('/ChatBot',{state:{otp:Math.floor(Math.random() * (999999 - 100000 + 1) + 100000)}})
+    }
+
     return (
         <nav className="main-nav">
             <div className="navbar">
@@ -50,19 +54,15 @@ const Navbar = ({searchValue}) => {
                 <Link to='/' className="nav-item nav-btn">About</Link>
                 {
                     user!==null ? <>
-                    <Link to='/ChatBot' className="nav-item nav-btn">ChatBot</Link>
-                    <Link to='/Subscription' className="nav-item nav-btn">Subscription</Link>
+                    <button onClick={handleClick} className="nav-item nav-btn nav-btn1">ChatBot</button>
+                    
                     </>
                     :
                     <>
-                    <button onClick={() => alert('Kindly Login First')} className="nav-item nav-btn nav-btn1">ChatBot</button>
-                    <button onClick={() => alert('Kindly Login First')} className="nav-item nav-btn nav-btn1">Subscription</button>
+                    <button onClick={() => alert('Kindly login to access the chatbot')} className="nav-item nav-btn nav-btn1">ChatBot</button>
                     </>
                 }
-                {
-
-                }
-                
+                <Link to='/Subscription' className="nav-item nav-btn">Subscription</Link>
                 <form>
                     <input value={search1} onChange={(e)=>handleChange(e)} type="text" placeholder="Search..."/>
                     <img src={search} alt="search" width="18" className="search-icon"/>

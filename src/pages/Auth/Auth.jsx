@@ -7,7 +7,7 @@ import {logIn} from "../../actions/auth.js"
 import "./Auth.css";
 import OTPVerification from "./OTPVerfication";
 import { useRef } from "react";
-//import emailjs from '@emailjs/browser';
+import emailjs from '@emailjs/browser';
 
 const Auth = () => {
 
@@ -17,25 +17,25 @@ const Auth = () => {
     const [name,setName] = useState('')
     const [email,setEmail] = useState('')
     const [pass,setPass] = useState('')
-    const [OTP,setOTP] = useState(0)
+    // eslint-disable-next-line
+    const [OTP,setOTP] = useState(Math.floor(Math.random() * (999999 - 100000 + 1) + 100000))
     const navigate = useNavigate()
     const dispatch = useDispatch()
-
+    
     const sendEmail = () => {
-        console.log(form.current)
-        /*emailjs.sendForm('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', form.current, 'YOUR_PUBLIC_KEY')
+        if(document.getElementById('otp1'))
+        {document.getElementById('otp1').value=OTP}
+        emailjs.sendForm('service_tk3cy9c', 'template_1uu9lqq', form.current, 'AQ9a1JbB6NtWIgVHd')
         .then((result) => {
             console.log(result.text);
         }, (error) => {
             alert(error.text);
             navigate('/Auth');
-        });*/
+        });
         setClick(true)
     };
 
     const Users = useSelector(state => state.authReducer);
-    if(document.getElementById('otp1'))
-    document.getElementById('otp1').value=OTP
     const handleSubmit = (e) =>{
         e.preventDefault()
         if(isSignup)
@@ -45,7 +45,7 @@ const Auth = () => {
             }
             else{
                 var flag=0;
-                for(let i=0;Users && i<Users.data.length;i++)
+                for(let i=0;Users!==null && i<Users.data.length;i++)
                 {
                     if(Users.data[i].email===email){
                         flag=1;
@@ -53,13 +53,11 @@ const Auth = () => {
                     }
                 }
                 if(flag===0){
-                    setOTP(Math.floor(Math.random() * (999999 - 100000 + 1) + 100000))
                     sendEmail()
                 }
                 else{
                     alert("The Email ID is already exist!");
                 }
-                //dispatch(signUp({name:name,email:email,password:pass},navigate));
             }
         }
         else{
@@ -87,13 +85,13 @@ const Auth = () => {
                     isSignup && (
                         <label htmlFor="name">
                             <h4>Display Name</h4>
-                            <input type="text" id="name" name="name" value={name} onChange={(e) => setName(e.target.value)}/>
+                            <input type="text" id="user_name" name="user_name" value={name} onChange={(e) => setName(e.target.value)}/>
                         </label>
                     )
                 } 
                 <label htmlFor="user">
                     <h4>Email</h4>
-                    <input type="email" name="user" id="user" value={email} onChange={(e) => setEmail(e.target.value)}/>
+                    <input type="email" name="user_email" id="user_email" value={email} onChange={(e) => setEmail(e.target.value)}/>
                 </label>
                 <label htmlFor="password">
                     <div style={{display:"flex",justifyContent:"space-between"}}>
@@ -125,7 +123,7 @@ const Auth = () => {
                         <p style={{color:"#666767",fontSize:"13px"}}>By clicking "Sign up", you agree to our <span style={{color:"#007ac6"}}>terms of <br/>service</span>, <span style={{color:"#007ac6"}}>privacy policy</span> and <span style={{color:"#007ac6"}}>cookie policy</span></p>
                     )
                 }
-                <input type="hidden" name="otp" id='otp1' value={OTP}/>
+                <input type="hidden" name="otp" id='otp1' value="0"/>
             </form>
             <p>
                 { isSignup ? 'Already have an account?' : "Don't have an account?"}

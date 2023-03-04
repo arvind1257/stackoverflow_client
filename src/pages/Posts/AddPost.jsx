@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux"
-import "./Users.css"
-import {uploadPosts} from "../../actions/posts"
+import "../Users/Users.css"
+import {uploadMedia} from "../../actions/posts"
 const AddPost = ({currentUser,back}) =>{
 
     const dispatch = useDispatch();
@@ -23,11 +23,16 @@ const AddPost = ({currentUser,back}) =>{
         e.preventDefault();
         if(!userInfo.file) alert("Media is required")
         else{
-            dispatch(uploadPosts({_id:currentUser._id,name:currentUser.name,content:text,fileType:userInfo.file.type,file:userInfo.file.name}))
+            const formdata = new FormData(); 
+            formdata.append('avatar', userInfo.file);
+            dispatch(uploadMedia(
+                {_id:currentUser._id,name:currentUser.name,content:text,fileType:userInfo.file.type,file:userInfo.file.name},
+                formdata,
+                {headers: { "Content-Type": "multipart/form-data" }}
+            ))
             back()
         }
     }
-    console.log(userInfo.file)
 
 
     return (

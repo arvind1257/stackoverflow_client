@@ -51,6 +51,7 @@
 }
 
 .navbar form{
+    margin-bottom: 0px;
     flex-grow: 1;
     padding:0px 12px;
     position: relative;

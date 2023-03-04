@@ -1,8 +1,12 @@
 import React from "react";
 import chatbot from '../../assests/chatbot1.jpg'
-
+import moment from "moment"
+import copy from "copy-to-clipboard"
 const ChatMessage = ({message,User}) =>{
     const mess1 = message.mess.split('\n');
+    const handleCopy = (message) =>{
+        copy(message)
+    }
     return (
         <>
         {
@@ -12,11 +16,17 @@ const ChatMessage = ({message,User}) =>{
                         <img src={chatbot} alt="" width="55"/>
                     </div>
                     <div className="bot-message">
+                        <div>
                         {
                             mess1.length>=1 && mess1.map((item)=>(
                                 <>{item}<br/></>
                             )
                         )}
+                        </div>
+                        <div className="bot-message-control">
+                            <button onClick={()=>handleCopy(message.mess)} type="button" className="bot-control-btn">Copy</button>
+                            <div>{moment(message.time).fromNow()}</div>
+                        </div>
                     </div>
                 </div> : 
                 <div key={message.no} className="chatbot-message-2">

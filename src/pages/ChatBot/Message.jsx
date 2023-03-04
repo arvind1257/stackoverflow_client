@@ -5,31 +5,43 @@ import { faPaperPlane } from "@fortawesome/free-solid-svg-icons"
 import ReactScrollableFeed from "react-scrollable-feed"
 import { useDispatch, useSelector } from "react-redux";
 import { chatbot } from "../../actions/chatbot.js"
-const Message = ({user}) =>{
+import { useLocation } from "react-router-dom"
+import emailjs from '@emailjs/browser';
+const Message = ({user,form}) =>{
     const [message , setMessage] = useState('');
     const dispatch = useDispatch();
+    const location = useLocation();
     const [Chat,setChat] = useState(JSON.parse(localStorage.getItem('chat')))
     const botAnswer = useSelector((state)=> state.chatbotReducer)
     const User = user;
-    if(Chat===null)
+    const otp = location.state.otp
+    if(form && Chat===null)
     {
-        setChat({
+        var content = {
             id:user._id,
             message:[{
                 no:1,
                 status:"welcome",
                 type:"bot",
                 mess:"Welcome to StackOverflow ChatBot.",
+                time:Date(),
             },{
                 no:2,
                 status:"otp code",
                 type:"bot",
                 mess:"An OTP is send to your registered mail id", 
+                time:Date(),
             }],
-        })
-    }
-    if(!localStorage.getItem('otp')){
-        localStorage.setItem('otp',Math.floor(Math.random() * (999999 - 100000 + 1) + 100000))
+        }
+        setChat(content)
+        emailjs.sendForm('service_tk3cy9c', 'template_1uu9lqq', form, 'AQ9a1JbB6NtWIgVHd')
+        .then((result) => {
+            console.log(result.text);
+        }, (error) => {
+            alert(error.text);
+        });
+        console.log("EMAIL SENT")
+        localStorage.setItem('chat',JSON.stringify(content))
     }
     const handleSubmit = () =>{
         let content = Chat
@@ -38,7 +50,8 @@ const Message = ({user}) =>{
                 no:Chat.message.length+1,
                 status:"otp code",
                 type:"user",
-                mess:message
+                mess:message,
+                time:Date(),
             })
             setChat(content)
             localStorage.setItem('chat',JSON.stringify(content))
@@ -48,7 +61,8 @@ const Message = ({user}) =>{
                 no:Chat.message.length+1,
                 status:"questions",
                 type:"user",
-                mess:message
+                mess:message,
+                time:Date(),
             })
             setChat(content)
             localStorage.setItem('chat',JSON.stringify(content))
@@ -56,15 +70,15 @@ const Message = ({user}) =>{
         }
         setMessage('');
     }
-
     if(Chat!==null && Chat.message[Chat.message.length-1].type==="user" && Chat.message[Chat.message.length-1].status==="otp code"){
         let content = Chat
-        if(Chat.message[Chat.message.length-1].mess===localStorage.getItem('otp')){
+        if(Chat.message[Chat.message.length-1].mess==otp){
             content.message.push({
                 no:Chat.message.length+1,
                 status:"questions",
                 type:"bot",
-                mess:"Thank You for verifing, Now you can ask me the questions"
+                mess:"Thank You for verifing, Now you can ask me the questions",
+                time:Date(),
             })
         }
         else{
@@ -72,7 +86,8 @@ const Message = ({user}) =>{
                 no:Chat.message.length+1,
                 status:"otp code",
                 type:"bot",
-                mess:"Invalid OTP, Try Again"
+                mess:"Invalid OTP, Try Again",
+                time:Date(),
             })
         }
         setChat(content)
@@ -85,7 +100,8 @@ const Message = ({user}) =>{
             no:Chat.message.length+1,
             status:"questions",
             type:"bot",
-            mess:botAnswer.bot.trim()
+            mess:botAnswer.bot.trim(),
+            time:Date(),
         })
         dispatch({type:"CLEAR_ANSWER",payload:null})
         setChat(content)

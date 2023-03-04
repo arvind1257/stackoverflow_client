@@ -3,11 +3,11 @@ import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import "./Post.css"
 import LeftSidebar from "../../components/LeftSidebar/LeftSidebar"
-import DisplayPost from "../Users/DisplayPost";
+import DisplayPost from "../Posts/DisplayPost";
 const Posts = () =>{
 
     const posts = useSelector((state)=>state.postsReducer)
-    
+    console.log(posts)
     return (
         <div className="home-container-1">
             <LeftSidebar/>
@@ -26,7 +26,9 @@ const Posts = () =>{
                     :
                     <h1>Loading...</h1>
                 }    
-                    
+                {
+                    posts.length===0 && <h1 style={{textAlign:"center"}}>No Posts</h1>
+                }   
                 </div>
             </div>
         </div>
