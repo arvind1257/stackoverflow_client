@@ -37,6 +37,7 @@ const QuestionDetails = () => {
                     return true;
                 })
             }
+            return true;
         })
     }
 

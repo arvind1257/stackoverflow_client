@@ -73,6 +73,7 @@ const Message = ({user,forms}) =>{
     }
     if(Chat!==null && Chat.message[Chat.message.length-1].type==="user" && Chat.message[Chat.message.length-1].status==="otp code"){
         let content = Chat
+        // eslint-disable-next-line
         if(Chat.message[Chat.message.length-1].mess==otp){
             content.message.push({
                 no:Chat.message.length+1,
