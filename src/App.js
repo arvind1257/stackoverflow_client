@@ -11,6 +11,7 @@ import {getPosts} from "./actions/posts"
 function App() {
 
   const [data,setData] = useState('')
+  const [form,setForm] = useState(null)
   const dispatch = useDispatch()
   useEffect(() => {
     dispatch(fetchAllQuestions())
@@ -25,11 +26,14 @@ function App() {
     setData(data1)
   }
 
+  const forms = (forms) => {
+    setForm(forms)
+  }
   return (
     <div>
       <Router>
-        <Navbar searchValue={searchValue}/>
-        <AllRoutes searchData={data}/>
+        <Navbar searchValue={searchValue} forms={forms}/>
+        <AllRoutes searchData={data} forms={form}/>
       </Router>
     </div>
   );

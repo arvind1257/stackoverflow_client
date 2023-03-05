@@ -13,7 +13,7 @@ import Subscription from "./pages/Subscription/Subscription";
 import Friends from "./pages/friends/Friends";
 import ViewPost from "./pages/Posts/ViewPost";
 
-const AllRoutes = ({searchData}) => {
+const AllRoutes = ({searchData,forms}) => {
     return(
         <Routes>
             <Route path='/Auth' element={<Auth/>}/>
@@ -22,7 +22,7 @@ const AllRoutes = ({searchData}) => {
             <Route path='/AskQuestion' element={<AskQuestion/>}/>  
             <Route path='/Questions/:id' element={<DisplayQuestion/>}/>  
             <Route path='/Posts' element={<Posts/>}/>   
-            <Route path='/ChatBot' element={<ChatBot />}/>  
+            <Route path='/ChatBot' element={<ChatBot forms={forms}/>}/>  
             <Route path='/Users' element={<Users searchData={searchData}/>}/>  
             <Route path='/Users/:id' element={<UserProfile/>}/>
             <Route path='/Subscription' element={<Subscription/>}/>

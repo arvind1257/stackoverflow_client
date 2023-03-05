@@ -8,7 +8,7 @@ import { useLocation } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { deleteAnswer } from "../../actions/question.js"; 
 
-const DisplayAnswer = ({question}) =>{
+const DisplayAnswer = ({colors,question}) =>{
     
     const { id } = useParams()
     const dispatch = useDispatch() 
@@ -42,12 +42,15 @@ const DisplayAnswer = ({question}) =>{
                             </div>
                             <div>
                                 <p>answered {moment(ans.answeredOn).fromNow()}</p>
+                                {
+                                colors!==null && colors.filter((item) => item.id===ans.userId).map((item)=>(   
                                 <Link to={`/Users/${ans.userId}`} className="user-link" style={{color:"#0086d8"}}>
-                                    <Avatar>{ans.userAnswered.charAt(0).toUpperCase()}</Avatar>
+                                    <Avatar backgroundColor={item.color} px="10px" py="7px" color="white" borderRadius="50%" cursor="pointer">{ans.userAnswered.charAt(0).toUpperCase()}</Avatar>
                                     <div>
                                         {ans.userAnswered}
                                     </div>
                                 </Link>
+                                ))}
                             </div>
                         </div>
                     </div>

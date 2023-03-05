@@ -9,6 +9,7 @@ import DisplayAnswer from "./DisplayAnswer";
 import { useDispatch, useSelector } from "react-redux";
 import { deleteQuestion, postAnswer, voteQuestion } from "../../actions/question";
 import copy from "copy-to-clipboard"
+import randomColor from "randomcolor";
 
 const QuestionDetails = () => {
 
@@ -18,6 +19,26 @@ const QuestionDetails = () => {
     const [answer,setAnswer] = useState('')
     const User = useSelector(state => state.currentUserReducer);
     const questionsList = useSelector(state => state.questionReducer);
+    var colors = []
+    if(questionsList.data!==null && colors.length===0){
+        questionsList.data.filter((question) => question._id===id).map((question)=>{
+            colors.push({
+                id:question.userId,
+                color:randomColor({luminosity: 'dark'})
+            })
+            if(question.answer!==null){
+                question.answer.map((items)=>{
+                    if(colors.filter((item)=>item.id===items.userId).length===0){
+                        colors.push({
+                            id:items.userId,
+                            color:randomColor({luminosity: 'dark'})
+                        })
+                    }
+                    return true;
+                })
+            }
+        })
+    }
 
     const handleSubmit = (e,answerLength) =>{
         e.preventDefault();
@@ -100,12 +121,18 @@ const QuestionDetails = () => {
                                             </div>
                                             <div>
                                                 <p>asked {moment(question.askedOn).fromNow()}</p>
+                                                {
+                                                colors.filter((item)=>item.id===question.userId).map((item)=>(    
                                                 <Link to={`/Users/${question.userId}`} className="user-link" style={{color:"#0086d8"}}>
-                                                    <Avatar>{question.userPosted.charAt(0).toUpperCase()}</Avatar>
+                                                    <Avatar backgroundColor={item.color} px="10px" py="7px" color="white" borderRadius="50%" cursor="pointer">
+                                                        {question.userPosted.charAt(0).toUpperCase()}
+                                                    </Avatar>
                                                     <div>
                                                         {question.userPosted}
                                                     </div>
                                                 </Link>
+                                                ))
+                                                }
                                             </div>
                                         </div>
                                     </div>
@@ -116,7 +143,7 @@ const QuestionDetails = () => {
                                 question.noOfAnswers !==0 && (
                                     <section>
                                         <h3>{question.noOfAnswers} answers</h3>
-                                        <DisplayAnswer key={question._id} question={question}/>
+                                        <DisplayAnswer colors={colors} key={question._id} question={question}/>
                                     </section>
                                 )
                             }

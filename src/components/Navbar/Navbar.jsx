@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react"
+import React, { useEffect, useState, useRef } from "react"
 import { Link,useNavigate } from "react-router-dom"
 import logo from "../../assests/blacklogo.png"
 import search from '../../assests/search-solid.svg'
@@ -10,7 +10,8 @@ import { setCurrentUser } from "../../actions/currentUser"
 import decode from "jwt-decode"
 import { getUsers } from "../../actions/auth"
 
-const Navbar = ({searchValue}) => {
+const Navbar = ({searchValue,forms}) => {
+    const form = useRef()
     const navigate = useNavigate()
     const dispatch = useDispatch()
     const [search1,setSearch] = useState('')
@@ -41,10 +42,11 @@ const Navbar = ({searchValue}) => {
         searchValue(e.target.value)
     }
 
-    const handleClick = () =>{
-        navigate('/ChatBot',{state:{otp:Math.floor(Math.random() * (999999 - 100000 + 1) + 100000)}})
+    const handleClick = (e) =>{
+        e.preventDefault();
+        forms(form.current)
+        navigate('/ChatBot')
     }
-
     return (
         <nav className="main-nav">
             <div className="navbar">
@@ -54,7 +56,12 @@ const Navbar = ({searchValue}) => {
                 <Link to='/' className="nav-item nav-btn">About</Link>
                 {
                     user!==null ? <>
-                    <button onClick={handleClick} className="nav-item nav-btn nav-btn1">ChatBot</button>
+                    <form ref={form} onSubmit={handleClick}>
+                        <input type="hidden" name="user_name" value={user.name}/>
+                        <input type="hidden" name="user_email" value={user.email}/>
+                        <input type="hidden" name="otp" id='otp' value={user.otp}/>
+                        <button type="submit" className="nav-item nav-btn nav-btn1">ChatBot</button>
+                    </form>
                     
                     </>
                     :
@@ -71,9 +78,9 @@ const Navbar = ({searchValue}) => {
                     user===null ?
                         <Link to='/Auth' className="nav-item nav-links">Log in</Link> :
                         <>
-                            <Avatar><Link to={`/Users/${user._id}`} style={{color:"white",textDecoration:"none"}}>{user.name.charAt(0).toUpperCase()}</Link></Avatar>
+                            <Avatar backgroundColor="#009dff" px="10px" py="7px" color="white" borderRadius="50%" cursor="pointer"><Link to={`/Users/${user._id}`} style={{color:"white",textDecoration:"none"}}>{user.name.charAt(0).toUpperCase()}</Link></Avatar>
                             <button className="nav-item nav-links" onClick={handleLogin}>Log out</button>
-                        </>
+                        </>//backgroundColor:"#009dff",padding:"7px 10px",color:"white",borderRadius:"50%",fontSize:"",textAlign:"center",cursor:"pointer",textDecoration:"none"
                 }
             </div>
         </nav>

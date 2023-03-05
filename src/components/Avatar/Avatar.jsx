@@ -1,11 +1,12 @@
 import React from "react";
 
-const Avatar = ({children}) =>{
+const Avatar = ({children,backgroundColor,px,py,color,borderRadius,fontSize,cursor,fontWeight}) =>{
     return (
-        <div style={{backgroundColor:"#009dff",padding:"7px 10px",color:"white",borderRadius:"50%",fontSize:"",textAlign:"center",cursor:"pointer",textDecoration:"none"}}>
+        <div style={{backgroundColor,padding:`${py} ${px}`,color,borderRadius,fontSize,textAlign:"center",cursor,textDecoration:"none",fontWeight}}>
             {children}
         </div>
     )
 }
 
 export default Avatar
+

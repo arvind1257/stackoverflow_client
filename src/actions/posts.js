@@ -14,13 +14,8 @@ export const uploadPosts = (postData) => async(dispatch) =>{
 export const uploadMedia = (postData,formData,head) => async(dispatch) =>{
     try{
         const {data} = await api.uploadMedia(formData,head)
-        if(data===""){
             postData.file=data
             dispatch(uploadPosts(postData))
-        }
-        else{
-            alert(data)
-        }
     }
     catch(err){
         console.log(err)

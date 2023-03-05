@@ -5,17 +5,17 @@ import { faPaperPlane } from "@fortawesome/free-solid-svg-icons"
 import ReactScrollableFeed from "react-scrollable-feed"
 import { useDispatch, useSelector } from "react-redux";
 import { chatbot } from "../../actions/chatbot.js"
-import { useLocation } from "react-router-dom"
 import emailjs from '@emailjs/browser';
-const Message = ({user,form}) =>{
+
+const Message = ({user,forms}) =>{
     const [message , setMessage] = useState('');
     const dispatch = useDispatch();
-    const location = useLocation();
     const [Chat,setChat] = useState(JSON.parse(localStorage.getItem('chat')))
     const botAnswer = useSelector((state)=> state.chatbotReducer)
     const User = user;
-    const otp = location.state.otp
-    if(form && Chat===null)
+    const otp = User.otp
+    var status = null
+    if(forms && Chat===null && status===null)
     {
         var content = {
             id:user._id,
@@ -33,15 +33,16 @@ const Message = ({user,form}) =>{
                 time:Date(),
             }],
         }
-        setChat(content)
-        emailjs.sendForm('service_tk3cy9c', 'template_1uu9lqq', form, 'AQ9a1JbB6NtWIgVHd')
+        emailjs.sendForm('service_tk3cy9c', 'template_1uu9lqq', forms, 'AQ9a1JbB6NtWIgVHd')
         .then((result) => {
             console.log(result.text);
+            status=result.text;
         }, (error) => {
             alert(error.text);
         });
         console.log("EMAIL SENT")
         localStorage.setItem('chat',JSON.stringify(content))
+        setChat(content)
     }
     const handleSubmit = () =>{
         let content = Chat
