@@ -15,6 +15,7 @@ const OTPVerification = ({otp,name,email,password}) =>{
         if(!OTP){
             alert('Enter the OTP!')
         }
+        // eslint-disable-next-line
         else if(OTP!=otp){
             alert('Invalid OTP')
         }
