@@ -64,7 +64,7 @@ const UserProfile = () =>{
                     <section key={user._id}>
                         <div className="user-details-container">
                         <div className="user-details">
-                            <Avatar>
+                            <Avatar backgroundColor="purple" color="white" fontSize="50px" px="40px" py="30px" borderRadius="0%">
                                 {user.name.charAt(0).toUpperCase()}
                             </Avatar>
                             <div className="user-name">
