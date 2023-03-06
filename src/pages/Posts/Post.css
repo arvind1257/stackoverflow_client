@@ -31,3 +31,12 @@
     text-align: center;
     height:40px;
 }
+
+.previewimg{
+    max-width:100%;
+    -webkit-user-select:none;
+    display:block;
+    margin:auto;
+    background-color:hsl(0, 0%, 90%);
+    transition:background-color 300ms;
+}
