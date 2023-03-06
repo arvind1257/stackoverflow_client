@@ -49,6 +49,15 @@ const Navbar = ({searchValue,forms}) => {
     }
     return (
         <nav className="main-nav">
+            {
+                user!==null &&
+            <form id="otpform" ref={form} onSubmit={handleClick}>
+                        <input type="hidden" name="user_name" value={user.name}/>
+                        <input type="hidden" name="user_email" value={user.email}/>
+                        <input type="hidden" name="otp" id='otp' value={user.otp}/>
+                        
+                    </form>
+                }
             <div className="navbar">
                 <Link to='/' className="nav-item nav-logo">
                     <img src={logo} alt="logo" width="160"/>
@@ -56,13 +65,7 @@ const Navbar = ({searchValue,forms}) => {
                 <Link to='/' className="nav-item nav-btn">About</Link>
                 {
                     user!==null ? <>
-                    <form ref={form} onSubmit={handleClick}>
-                        <input type="hidden" name="user_name" value={user.name}/>
-                        <input type="hidden" name="user_email" value={user.email}/>
-                        <input type="hidden" name="otp" id='otp' value={user.otp}/>
-                        <button type="submit" className="nav-item nav-btn nav-btn1">ChatBot</button>
-                    </form>
-                    
+                    <button form="otpform" type="submit" className="nav-item nav-btn nav-btn1">ChatBot</button>
                     </>
                     :
                     <>
