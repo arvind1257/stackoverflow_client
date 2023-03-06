@@ -13,7 +13,7 @@ const ViewPost = () => {
                      posts.filter((item)=>{return item._id===id}).map((post)=>(
                         post.fileType!=="video/mp4" ? 
                         
-                            <img className="previewimg" src={`https://drive.google.com/uc?export=view&id=${post.file}`} alt="UploadImage" /> 
+                            <img className="previewimg1" src={`https://drive.google.com/uc?export=view&id=${post.file}`} alt="UploadImage" /> 
                             :
                             <video preload="auto" controls style={{maxHeight:"80vh",maxWidth:"100%"}} >
                                 <source src={`https://drive.google.com/uc?export=view&id=${post.file}`}></source>
