@@ -23,8 +23,9 @@ const AddPost = ({currentUser,back}) =>{
         e.preventDefault();
         if(!userInfo.file) alert("Media is required")
         else{
-            const formdata = new FormData(); 
-            formdata.append('avatar', userInfo.file);
+            const formElem = document.querySelector('#addpost');
+            const formdata = new FormData(formElem);
+            console.log(formdata)
             dispatch(uploadMedia(
                 {_id:currentUser._id,name:currentUser.name,content:text,fileType:userInfo.file.type,file:userInfo.file.name},
                 formdata,
@@ -40,12 +41,12 @@ const AddPost = ({currentUser,back}) =>{
                 <h1 className="edit-profile-title">
                     Add Your Post
                 </h1>
-                <form className="edit-profile-form" onSubmit={handleSubmit}>
+                <form id="addpost" className="edit-profile-form" onSubmit={handleSubmit}>
                     <label htmlFor="media">
                         <h3>Media</h3>
                         <div className="form-row">
                             <label className="text-white">Select Media :&emsp;</label>
-                            <input type="file" className="form-control" name="upload_file" onChange={handleInputChange} />
+                            <input type="file" className="form-control" name="files" onChange={handleInputChange} />
                         </div>
                         {
                         userInfo.filepreview !== null && userInfo.file.type!=="video/mp4" && <img style={{maxWidth:"100%"}} className="previewimg"  src={userInfo.filepreview} alt="UploadImage" />

@@ -31,10 +31,10 @@ const DisplayPost = ({post}) =>{
             <div className="image-container">
                 {
                 post.fileType!=="video/mp4" ? 
-                <img style={{maxWidth:"100%"}} className="previewimg" src={require('../../assests/posts/'+post.file)} alt="UploadImage" /> 
+                <img style={{maxWidth:"100%"}} className="previewimg" src={`https://drive.google.com/uc?export=view&id=${post.file}`} alt="UploadImage" /> 
                 :
                 <video preload="auto" controls style={{maxWidth:"100%"}} >
-                    <source src={require('../../assests/posts/'+post.file)}></source>
+                    <source src={`https://drive.google.com/uc?export=view&id=${post.file}`}></source>
                 </video>
                 }
             </div>
