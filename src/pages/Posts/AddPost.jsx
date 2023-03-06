@@ -57,6 +57,7 @@ const AddPost = ({currentUser,back}) =>{
                             <source src={userInfo.filepreview}></source>
                         </video>    
                         }
+                        
                     </label>
 
                     <label htmlFor="text">
