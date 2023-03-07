@@ -21,4 +21,11 @@
 
 .friend-profile-link h5{
     margin:0px 10px;
+    font-weight: revert;
+    line-height: initial;
+    font-size: initial;
+}
+
+.friend-profile-link:hover{
+    color: black;
 }

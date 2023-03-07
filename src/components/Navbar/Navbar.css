@@ -16,12 +16,22 @@
 
 .navbar{
     height:100%;
-    min-width:85%;
+    min-width:105%;
+    display:flex;
+    align-items: center;
+    justify-content:center;
+}
+
+.navbar-sub-1,.navbar-sub-2{
     display:flex;
     align-items: center;
     justify-content: space-between;
 }
 
+.navbar-sub-2{
+    
+    min-width:45%;
+}
 .nav-logo{
     padding:5px 25px;
 }
@@ -33,6 +43,8 @@
     text-decoration: none;
     color:rgb(69,69,69);
     transition: 0.2s;
+    font-size: small;
+    line-height: initial;
 }
 
 .nav-btn{
@@ -64,7 +76,8 @@
     font-size:13px;
     border:solid 1px #0000003e;
     border-radius: 3px;
-    ;
+    font-family: initial;
+    line-height: initial;
 }
 
 .navbar form .search-icon{

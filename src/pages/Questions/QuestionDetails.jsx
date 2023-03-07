@@ -95,7 +95,7 @@ const QuestionDetails = () => {
                     questionsList.data.filter((question) => question._id === id ).map((question) => (
                         <div key={id}>
                             <section className="question-details-container">
-                                <h1>{question.questionTitle}</h1>
+                                <h1 style={{fontWeight:"bold",fontSize:"1.5em",marginTop:"revert",marginBottom:"revert"}}>{question.questionTitle}</h1>
                                 <div className="question-details-container-2">
                                     <div className="question-votes">
                                         <img src={upVote} alt="upVote" width="30" className="votes-icon" onClick={handleUpVote}/>

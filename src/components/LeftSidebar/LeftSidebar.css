@@ -33,6 +33,11 @@
     transition: 0.2s;
 }
 
+.side-nav-links p {
+    margin-top: revert;
+    margin-bottom: revert;
+}
+
 .side-nav-links:hover{
     color:black;
 }

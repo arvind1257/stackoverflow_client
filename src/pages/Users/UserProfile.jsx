@@ -64,11 +64,11 @@ const UserProfile = () =>{
                     <section key={user._id}>
                         <div className="user-details-container">
                         <div className="user-details">
-                            <Avatar backgroundColor="purple" color="white" fontSize="50px" px="40px" py="30px" borderRadius="0%">
+                            <Avatar backgroundColor="purple" color="white" fontSize="50px" px="40px" py="25px" borderRadius="0%">
                                 {user.name.charAt(0).toUpperCase()}
                             </Avatar>
                             <div className="user-name">
-                                <h1>{user.name}</h1>
+                                <h1 style={{fontWeight:"bold",fontSize:"1.5em",marginTop:"revert",marginBottom:"revert"}}>{user.name}</h1>
                                 <p><FontAwesomeIcon icon={faBirthdayCake} /> joined {moment(user.joinedOn).fromNow()}</p>
                             </div>
                         </div>

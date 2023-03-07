@@ -1,3 +1,7 @@
+*{
+    box-sizing:revert;
+}
+
 .auth-section{
     min-height:100vh;
     margin: 0% auto;
@@ -41,7 +45,7 @@
 
 .auth-container-2 form label input{
     padding:10px;
-    width: calc(100% - 30px);
+    width: 100%;
     border:solid 1px #0000003e;
     font-size: 13px;
 } 
@@ -51,6 +55,8 @@
 .auth-container-2 form label:nth-child(3) h4{
     margin-bottom: 5px;
     margin-top: 10px;
+    font-size:initial;
+    font-weight: bold;
 
 }
 

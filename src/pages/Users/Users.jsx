@@ -34,7 +34,7 @@ const Users = ({searchData}) =>{
         <div className="home-container-1">
             <LeftSidebar/>
             <div className="home-container-2" style={{marginTop:"40px"}}>
-                <h1 style={{fontWeight:"500"}}>users</h1>
+                <h1 style={{fontWeight:"500",fontSize:"2em",marginTop:"revert",marginBottom:"revert"}}>Users</h1>
                 <div className="userList-container">
                 {
                     users.data ? users.data.filter((item)=> item.name.toLowerCase().includes(searchData.toLowerCase())).map((user) => (

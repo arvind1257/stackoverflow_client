@@ -15,6 +15,13 @@
 
 .user-profile-link h4{
     margin:0px 10px;
+    font-weight: revert;
+    line-height: initial;
+    font-size: initial;
+}
+
+.user-profile-link:hover{
+    color:black;
 }
 
 .user-details-container{
@@ -26,6 +33,7 @@
 }
 
 .user-details{
+    margin-bottom: 10px;
     display:flex;
     align-items: flex-start;
 }

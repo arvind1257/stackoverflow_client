@@ -13,6 +13,9 @@
 
 .main-bar-header h1{
     font-weight: 400;
+    font-size: 2em;
+    margin-top: revert;
+    margin-bottom: revert;
 }
 
 .main-bar-header .ask-btn{
@@ -23,6 +26,8 @@
     text-decoration: none;
     border: none;
     transition: 0.3s;
+    line-height: initial;
+    font-size: small;
 }
 
 .main-bar-header .ask-btn:hover{
