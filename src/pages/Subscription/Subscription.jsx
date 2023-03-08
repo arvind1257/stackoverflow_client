@@ -5,7 +5,7 @@ import LeftSidebar from "../../components/LeftSidebar/LeftSidebar";
 import "./Subscription.css"
 import { HOME2,SUBSCRIPTIONPLAN } from "../../components/StyledComponent";
 
-const Subscription = () => {
+const Subscription = ({sideBar}) => {
 
     const User = useSelector((state)=>state.currentUserReducer)
     const dispatch = useDispatch()
@@ -55,7 +55,7 @@ const Subscription = () => {
 
     return (
         <div className="home-container-1">
-            <LeftSidebar/>
+            <LeftSidebar sideBar={sideBar}/>
             <HOME2 className="home-container-2">
                 {
                 <>    

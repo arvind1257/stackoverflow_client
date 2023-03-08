@@ -12,6 +12,7 @@ function App() {
 
   const [data,setData] = useState('')
   const [form,setForm] = useState(null)
+  const [sideBar,setSideBar] = useState(false)
   const dispatch = useDispatch()
   useEffect(() => {
     dispatch(fetchAllQuestions())
@@ -29,11 +30,16 @@ function App() {
   const forms = (forms) => {
     setForm(forms)
   }
+
+  const sideNavbar = (status) =>{
+    setSideBar(status)
+  }
+
   return (
     <div>
       <Router>
-        <Navbar searchValue={searchValue} forms={forms}/>
-        <AllRoutes searchData={data} forms={form}/>
+        <Navbar searchValue={searchValue} forms={forms} sideNavbar={sideNavbar}/>
+        <AllRoutes searchData={data} forms={form} sideBar={sideBar} />
       </Router>
     </div>
   );

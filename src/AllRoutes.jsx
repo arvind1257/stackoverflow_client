@@ -13,20 +13,20 @@ import Subscription from "./pages/Subscription/Subscription";
 import Friends from "./pages/friends/Friends";
 import ViewPost from "./pages/Posts/ViewPost";
 
-const AllRoutes = ({searchData,forms}) => {
+const AllRoutes = ({searchData,forms,sideBar}) => {
     return(
         <Routes>
             <Route path='/Auth' element={<Auth/>}/>
-            <Route path='/' element={<Home searchData={searchData}/>}/>            
-            <Route path='/Questions' element={<Questions searchData={searchData}/>}/>   
+            <Route path='/' element={<Home searchData={searchData} sideBar={sideBar}/>}/>            
+            <Route path='/Questions' element={<Questions searchData={searchData} sideBar={sideBar}/>}/>   
             <Route path='/AskQuestion' element={<AskQuestion/>}/>  
-            <Route path='/Questions/:id' element={<DisplayQuestion/>}/>  
-            <Route path='/Posts' element={<Posts/>}/>   
-            <Route path='/ChatBot' element={<ChatBot forms={forms}/>}/>  
-            <Route path='/Users' element={<Users searchData={searchData}/>}/>  
-            <Route path='/Users/:id' element={<UserProfile/>}/>
-            <Route path='/Subscription' element={<Subscription/>}/>
-            <Route path='/Friends' element={<Friends/>}/>
+            <Route path='/Questions/:id' element={<DisplayQuestion sideBar={sideBar}/>}/>  
+            <Route path='/Posts' element={<Posts sideBar={sideBar}/>}/>   
+            <Route path='/ChatBot' element={<ChatBot forms={forms} sideBar={sideBar}/>}/>  
+            <Route path='/Users' element={<Users searchData={searchData} sideBar={sideBar}/>}/>  
+            <Route path='/Users/:id' element={<UserProfile sideBar={sideBar}/>}/>
+            <Route path='/Subscription' element={<Subscription sideBar={sideBar}/>}/>
+            <Route path='/Friends' element={<Friends sideBar={sideBar}/>}/>
             <Route path='/Post/:id' element={<ViewPost/>}/>
         </Routes>
     )

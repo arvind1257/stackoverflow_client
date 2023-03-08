@@ -8,7 +8,7 @@ import randomColor from "randomcolor"
 import Avatar from "../../components/Avatar/Avatar";
 import { HOME2 } from "../../components/StyledComponent";
 
-const Posts = () =>{
+const Posts = ({sideBar}) =>{
 
     const posts = useSelector((state)=>state.postsReducer)
     var colors = []
@@ -30,7 +30,7 @@ const Posts = () =>{
     }
     return (
         <div className="home-container-1">
-            <LeftSidebar/>
+            <LeftSidebar sideBar={sideBar}/>
             <HOME2 className="home-container-2" style={{marginTop:"40px"}}>
                 <div className="post-container-1">
                 {

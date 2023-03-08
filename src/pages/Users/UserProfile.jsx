@@ -13,7 +13,7 @@ import AddPost from "../Posts/AddPost";
 import { HOME2 } from "../../components/StyledComponent";
 
 
-const UserProfile = () =>{
+const UserProfile = ({sideBar}) =>{
     const {id} = useParams() 
     const Users = useSelector((state) => state.authReducer)
     const currentUser = useSelector((state) => state.currentUserReducer)
@@ -57,7 +57,7 @@ const UserProfile = () =>{
     
     return(
         <div className="home-container-1">
-            <LeftSidebar/>
+            <LeftSidebar sideBar={sideBar}/>
             <HOME2 className="home-container-2">
                 {
                 Users.data!==null && Users.data.filter((user)=>{return user._id===id}).map((user) =>(

@@ -6,12 +6,12 @@ import Globe from "../../assests/favicon.ico";
 import post from "../../assests/POSTS.png"
 import userIcon from "../../assests/users_icon.png"
 import { LEFTBAR } from "../StyledComponent";
-const LeftSidebar = () =>{
+const LeftSidebar = ({sideBar}) =>{
 
     const currentUser = useSelector((state)=>state.currentUserReducer)
 
     return(
-        <LEFTBAR id="left-main" className="left-sidebar">
+        <LEFTBAR id="left-main" className={sideBar ? "left-sidebar" : "left-sidebar left-nav"}>
             <div className="side-nav">
                 <NavLink to='/' className='side-nav-links' activeclass="active">
                     <p>Home</p>

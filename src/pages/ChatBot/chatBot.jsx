@@ -5,11 +5,11 @@ import Message from "./Message";
 import { HOME2 } from "../../components/StyledComponent";
 import "./chatBot.css";
 
-const ChatBot = ({forms}) =>{
+const ChatBot = ({forms,sideBar}) =>{
     const User = useSelector(state => state.currentUserReducer)
     return (
         <div className="home-container-1">
-            <LeftSidebar/>  
+            <LeftSidebar sideBar={sideBar}/>
             { 
             User!==null &&
             <HOME2 className="home-container-2">
