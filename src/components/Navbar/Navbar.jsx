@@ -57,7 +57,6 @@ const Navbar = ({searchValue,forms}) => {
     }
 
     const handleNavbar = (status) =>{
-        console.log(status)
         if(status==="open"){
             document.getElementById('sub-1').className="navbar-sub-11"
             document.getElementById('sub-2').className="navbar-sub-12"
