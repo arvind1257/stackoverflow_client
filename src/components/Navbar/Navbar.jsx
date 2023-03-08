@@ -22,7 +22,7 @@ const Navbar = ({searchValue,forms}) => {
     const dispatch = useDispatch()
     const [search1,setSearch] = useState('')
     const user = useSelector(state => state.currentUserReducer)
-    var Status = "open"
+    const [Status,setStatus] = useState("open")
     var Status1 = "open"
     useEffect(()=>{
         const token = user?.token
@@ -57,21 +57,21 @@ const Navbar = ({searchValue,forms}) => {
     }
 
     const handleNavbar = (status) =>{
-        console.log(status)
         if(status==="open"){
             document.getElementById('sub-1').className="navbar-sub-11"
             document.getElementById('sub-2').className="navbar-sub-12"
-            Status="close"
+            setStatus("close")
         }
         else{
             document.getElementById('sub-1').className="navbar-sub-1"
             document.getElementById('sub-2').className="navbar-sub-1"
-            Status="open"
+            setStatus("open")
         }
         document.getElementById('nav1').classList.toggle('change1')
     }
 
     const handleNavbar1 = (status1) =>{
+        if(document.getElementById('left-main'))
         document.getElementById('left-main').classList.toggle('left-nav')
     }
 
@@ -91,7 +91,8 @@ const Navbar = ({searchValue,forms}) => {
                 <div className="nav-sub-main">
                     <div className="navbar-menu-btn">
                         <button className="menu-btn" onClick={()=>handleNavbar1(Status1)}>
-                            <img src={menuIcon} alt="no img" width={35}/>
+                            {document.getElementById('left-main') &&
+                            <img src={menuIcon} alt="no img" width={35}/>}
                         </button>
                         <Link to='/' className="nav-item nav-logo">
                             <img src={logo} alt="logo" width="160"/>
