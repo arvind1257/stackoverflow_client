@@ -22,13 +22,14 @@
     justify-content:center;
 }
 
-.navbar-sub-1,.navbar-sub-2{
+.navbar-sub-1,.navbar-sub-2,
+.navbar-sub-11,.navbar-sub-12{
     display:flex;
     align-items: center;
     justify-content: space-between;
 }
 
-.navbar-sub-2{
+.navbar-sub-2,.navbar-sub-12{
     
     min-width:45%;
 }
@@ -45,6 +46,37 @@
     transition: 0.2s;
     font-size: small;
     line-height: initial;
+}
+
+
+
+.nav-sub{
+    display: flex;
+    align-items: center;
+}
+.navbar-menu-btn{
+    display: flex;
+    align-items: center;
+}
+.navbar-menu-btn button {
+    padding: 0px;
+    border: none;
+    display: none;
+    font-size: 25px;
+    margin-left: 30px;
+    margin-top: 5px;
+}
+
+.navbar-sub-btn{
+    display: none;
+    margin-right: 50px;
+    margin-top: 10px;
+}
+
+.navbar-sub-btn button{
+    padding:0px;
+    border:none;
+    font-size:25px;
 }
 
 .nav-btn{

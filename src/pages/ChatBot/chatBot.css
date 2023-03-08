@@ -76,14 +76,10 @@
 }
 
 .user-avatar{
-    background-color: orange;
-    border-radius: 50%;
-    padding:0px 20px;
     display: flex;
     align-items: center;
     color:white;    
     text-align: center;
-    height:54px;
 }
 
 .chatbot-input{

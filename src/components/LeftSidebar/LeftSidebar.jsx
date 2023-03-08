@@ -5,12 +5,16 @@ import "./LeftSidebar.css";
 import Globe from "../../assests/favicon.ico";
 import post from "../../assests/POSTS.png"
 import userIcon from "../../assests/users_icon.png"
+import { LEFTBAR } from "../StyledComponent";
 const LeftSidebar = () =>{
 
     const currentUser = useSelector((state)=>state.currentUserReducer)
+    if(document.querySelector('.home-container-1'))
+    console.log(document.querySelector('.home-container-1').clientHeight)
 
     return(
-        <div className="left-sidebar">
+        document.querySelector('.home-container-1') &&
+        <LEFTBAR height={document.querySelector('.home-container-1').clientHeight} id="left-main" className="left-sidebar">
             <div className="side-nav">
                 <NavLink to='/' className='side-nav-links' activeclass="active">
                     <p>Home</p>
@@ -39,7 +43,7 @@ const LeftSidebar = () =>{
                     </NavLink>
                 </div>
             </div>
-        </div>
+        </LEFTBAR>
     )
 }
 

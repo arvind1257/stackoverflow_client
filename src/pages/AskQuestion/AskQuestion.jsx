@@ -33,7 +33,7 @@ const AskQuestion = () => {
                 <h1>
                     Ask a Public Question
                     {
-                        user!==null && user.type!=='Gold' && <span className="remainder">&nbsp;({user.Questions.noOfPost} question remaining for today)</span>
+                        user!==null && user.type!=='Gold' && <span className="remainder"><br/>({user.Questions.noOfPost}<span style={{color:"transparent"}}>_</span>question remaining for today)</span>
                     }
                 </h1>
                 <form onSubmit={handleSubmit}>

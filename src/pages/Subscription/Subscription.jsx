@@ -3,6 +3,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { postSubscription } from "../../actions/subscription";
 import LeftSidebar from "../../components/LeftSidebar/LeftSidebar";
 import "./Subscription.css"
+import { HOME2,SUBSCRIPTIONPLAN } from "../../components/StyledComponent";
+
 const Subscription = () => {
 
     const User = useSelector((state)=>state.currentUserReducer)
@@ -54,7 +56,7 @@ const Subscription = () => {
     return (
         <div className="home-container-1">
             <LeftSidebar/>
-            <div className="home-container-2">
+            <HOME2 className="home-container-2">
                 {
                 <>    
                 <p className="subscription-note">Your currently using&nbsp;
@@ -67,9 +69,9 @@ const Subscription = () => {
                 {
                     User!==null && User.type==='Gold' && <>Gold Subscription and you can post any number of questions </>
                 }
-                    per day<br/>The following are the Subscription plans : 
+                    per day The following are the Subscription plans : 
                 </p>
-                <div className="subscription-plans">
+                <SUBSCRIPTIONPLAN className="subscription-plans">
                     <button onClick={() => handleClick('FREE')} className={User===null || User.type==='FREE' ?"subscription-plan free":"subscription-plan subscription-hower free"}>
                         <h2  style={{fontWeight:"bold",fontSize:"1.5em",marginTop:"revert",marginBottom:"revert"}}>FREE SUBSCRIPTION</h2>
                         <h3  style={{fontWeight:"bold",fontSize:"1.17em",marginTop:"revert",marginBottom:"revert"}}>FREE</h3>
@@ -85,11 +87,11 @@ const Subscription = () => {
                         <h3 style={{fontWeight:"bold",fontSize:"1.17em",marginTop:"revert",marginBottom:"revert"}}>₹1000 per month</h3>
                         <p>Gold plan can post unlimited questions a day</p>
                     </button>
-                </div>
+                </SUBSCRIPTIONPLAN>
                 </>
                 }
 
-            </div>
+            </HOME2>
         </div>
     )
 }

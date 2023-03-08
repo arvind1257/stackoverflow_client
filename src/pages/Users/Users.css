@@ -53,6 +53,10 @@
     background-color:white;
     cursor:pointer;
     transition: 0.3s;
+    margin: 0;
+    font-family: revert;
+    font-size: revert;
+    line-height: initial;
 }
 
 .edit-profile-btn:hover{
@@ -143,6 +147,7 @@
 
 .control-container{
     display: flex;
+    align-items: center;
     justify-content: space-between;
 }
 

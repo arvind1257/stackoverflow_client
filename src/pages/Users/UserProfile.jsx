@@ -10,7 +10,7 @@ import EditProfileForm from "./EditProfileForm";
 import ProfileBio from "./ProfileBio";
 import { requestSend,requestDelete, requestAccept,requestRemove } from "../../actions/request";
 import AddPost from "../Posts/AddPost";
-
+import { HOME2 } from "../../components/StyledComponent";
 
 
 const UserProfile = () =>{
@@ -58,7 +58,7 @@ const UserProfile = () =>{
     return(
         <div className="home-container-1">
             <LeftSidebar/>
-            <div className="home-container-2">
+            <HOME2 className="home-container-2">
                 {
                 Users.data!==null && Users.data.filter((user)=>{return user._id===id}).map((user) =>(
                     <section key={user._id}>
@@ -155,7 +155,7 @@ const UserProfile = () =>{
                 )) 
                 }
                 
-            </div>
+            </HOME2>
         </div>
     )
 }

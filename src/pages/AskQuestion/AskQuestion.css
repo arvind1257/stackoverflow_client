@@ -4,11 +4,15 @@
 
 .ask-ques-container{
     margin: auto;
+    padding: 20px;
     max-width: 1200px;
 }
 
 .ask-ques-container h1{
     padding:60px 0px 20px 0px;
+    font-weight: revert;
+    line-height: initial;
+    font-size: 2em;
 }
 
 .ask-ques-container form .ask-form-container{
@@ -20,8 +24,16 @@
     0 1px 4px rgb(0 0 0 /10%);
 }
 
+label{
+    display: initial;
+}
+
 .ask-form-container label h4{
     margin-bottom: 0%;
+    font-weight: revert;
+    line-height: initial;
+    font-size:1.2em;    
+    margin-top: revert; 
 }
 
 .ask-form-container label:nth-child(1) h4{
@@ -41,6 +53,10 @@
     font-family: 'Roboto',sans-serif;
     width:calc(100% - 20px);
     resize:vertical;    
+    margin: 0;
+    font-family: revert;
+    font-size: revert;
+    line-height: initial;
 }
 
 .review-btn{
@@ -52,6 +68,9 @@
     cursor: pointer;
     transition: 0.3s;
     border-radius: 4px;
+    font-family: revert;
+    font-size: revert;
+    line-height: initial;
 }
 
 .review-btn:hover{

@@ -6,6 +6,7 @@ import LeftSidebar from "../../components/LeftSidebar/LeftSidebar"
 import DisplayPost from "../Posts/DisplayPost";
 import randomColor from "randomcolor"
 import Avatar from "../../components/Avatar/Avatar";
+import { HOME2 } from "../../components/StyledComponent";
 
 const Posts = () =>{
 
@@ -30,7 +31,7 @@ const Posts = () =>{
     return (
         <div className="home-container-1">
             <LeftSidebar/>
-            <div className="home-container-2" style={{marginTop:"40px"}}>
+            <HOME2 className="home-container-2" style={{marginTop:"40px"}}>
                 <div className="post-container-1">
                 {
                     colors!==null && posts && posts!==null ? 
@@ -57,7 +58,7 @@ const Posts = () =>{
                     (posts===null || posts.length===0) && <h1 style={{textAlign:"center"}}>No Posts</h1>
                 }   
                 </div>
-            </div>
+            </HOME2>
         </div>
     )
 }

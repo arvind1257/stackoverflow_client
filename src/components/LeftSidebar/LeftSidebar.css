@@ -7,6 +7,10 @@
     font-size: 13px;
 }
 
+.left-nav{
+    display:initial;
+}
+
 .side-nav{
     height:auto;
     max-width:100%;

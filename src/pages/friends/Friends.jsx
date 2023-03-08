@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import { getUsers } from "../../actions/auth";
 import "./friends.css"
 import Avatar from "../../components/Avatar/Avatar";
-
+import { HOME2 } from "../../components/StyledComponent";
 const Friends = ({searchData}) =>{
     const dispatch = useDispatch()
     useEffect(() => {
@@ -17,7 +17,7 @@ const Friends = ({searchData}) =>{
     return (
         <div className="home-container-1">
             <LeftSidebar/>
-            <div className="home-container-2" style={{marginTop:"40px"}}>
+            <HOME2 className="home-container-2" style={{marginTop:"40px"}}>
                 <h1 style={{fontWeight:"500",fontSize:"2em",marginTop:"revert",marginBottom:"revert"}}>Friend Request : </h1>
                 <div className="friendList-container">
                 {
@@ -64,7 +64,7 @@ const Friends = ({searchData}) =>{
                         </>)) : <h3 style={{fontWeight:"500"}}>No Friends</h3>
                 }    
                 </div>
-            </div>
+            </HOME2>
             
         </div>
     )

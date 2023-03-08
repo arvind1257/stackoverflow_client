@@ -6,6 +6,7 @@ import { getUsers } from "../../actions/auth";
 import "./Users.css"
 import Avatar from "../../components/Avatar/Avatar";
 import randomColor from "randomcolor";
+import { HOME2 } from "../../components/StyledComponent";
 
 const Users = ({searchData}) =>{
     const dispatch = useDispatch()
@@ -33,7 +34,7 @@ const Users = ({searchData}) =>{
     return (
         <div className="home-container-1">
             <LeftSidebar/>
-            <div className="home-container-2" style={{marginTop:"40px"}}>
+            <HOME2 className="home-container-2" style={{marginTop:"40px"}}>
                 <h1 style={{fontWeight:"500",fontSize:"2em",marginTop:"revert",marginBottom:"revert"}}>Users</h1>
                 <div className="userList-container">
                 {
@@ -46,7 +47,7 @@ const Users = ({searchData}) =>{
                     )) : <h1>Loading....</h1>
                 }
                 </div>
-            </div>
+            </HOME2>
         </div>
     )
 }

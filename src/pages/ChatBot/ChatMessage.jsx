@@ -2,6 +2,8 @@ import React from "react";
 import chatbot from '../../assests/chatbot1.jpg'
 import moment from "moment"
 import copy from "copy-to-clipboard"
+import Avatar from "../../components/Avatar/Avatar";
+
 const ChatMessage = ({message,User}) =>{
     const mess1 = message.mess.split('\n');
     const handleCopy = (message) =>{
@@ -31,10 +33,10 @@ const ChatMessage = ({message,User}) =>{
                 </div> : 
                 <div key={message.no} className="chatbot-message-2">
                     <div className="user-message">
-                        <p>{message.mess}</p>
+                        <p style={{marginTop:"revert",marginBottom:"revert"}}>{message.mess}</p>
                     </div>
                     <div className="user-avatar">
-                        <h2>{User.name.charAt(0).toUpperCase()}</h2>
+                        <Avatar backgroundColor="orange" px="15px" py="5px" color="white" fontSize="30px" borderRadius="50%" cursor="pointer">{User.name.charAt(0).toUpperCase()}</Avatar>
                     </div>
                 </div>
         }
