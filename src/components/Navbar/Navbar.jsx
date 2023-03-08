@@ -74,7 +74,7 @@ const Navbar = ({searchValue,forms}) => {
         if(document.getElementById('left-main'))
         document.getElementById('left-main').classList.toggle('left-nav')
     }
-
+    console.log(document.getElementById('left-main'))
     return (
         <nav className="main-nav">
             {
