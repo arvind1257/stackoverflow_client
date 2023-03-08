@@ -11,7 +11,7 @@ const LeftSidebar = () =>{
     const currentUser = useSelector((state)=>state.currentUserReducer)
 
     return(
-        <LEFTBAR height={document.querySelector('.home-container-1').clientHeight} id="left-main" className="left-sidebar">
+        <LEFTBAR id="left-main" className="left-sidebar">
             <div className="side-nav">
                 <NavLink to='/' className='side-nav-links' activeclass="active">
                     <p>Home</p>
