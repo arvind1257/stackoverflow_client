@@ -26,8 +26,8 @@ const DisplayPost = ({post}) =>{
     const handleShare = () => {
         //copy("http://localhost:3000/post/"+post._id)
         //alert("Copied Url : http://localhost:3000/post/"+post._id)
-        copy("https://my-stackoverflow-clone.netlify.app/post/"+post._id)
-        alert("Copied Url : https://my-stackoverflow-clone.netlify.app/post/"+post._id)
+        copy("https://my-stackoverflow-clone-net.netlify.app/post/"+post._id)
+        alert("Copied Url : https://my-stackoverflow-clone-net.netlify.app/post/"+post._id)
     }
 
     return (
@@ -68,12 +68,14 @@ const DisplayPost = ({post}) =>{
                         </button>
                     </div>
                     <button onClick={handleShare} className="post-controls post-delete-button">
-                        <FontAwesomeIcon color="#009dff" icon={solid.faShareAlt} />&ensp;Share
+                        <FontAwesomeIcon color="#009dff" icon={solid.faShareAlt} />
+                        <span className="post-share-btn">&ensp;Share</span>
                     </button>
                     {
                         currentUser!==null && post.userId===currentUser._id && 
                         <button onClick={()=>handleDelete(post._id)} className="post-controls post-delete-button">
-                            <FontAwesomeIcon color="red" icon={regular.faTrashAlt}/>&ensp;Delete
+                            <FontAwesomeIcon color="red" icon={regular.faTrashAlt}/>
+                            <span className="post-share-btn">&ensp;Delete</span>
                         </button>
                     }
                 </div>
