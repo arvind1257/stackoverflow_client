@@ -121,3 +121,10 @@ export const SUBSCRIPTIONPLAN = Style.div`
     }
 
 `
+
+export const CONTROL = Style.div`
+    @media (max-width: 700px) {
+        flex-direction:column;
+        align-items:unset;
+    }
+`

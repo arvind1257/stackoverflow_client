@@ -27,7 +27,7 @@ const AllRoutes = ({searchData,forms,sideBar}) => {
             <Route path='/Users/:id' element={<UserProfile sideBar={sideBar}/>}/>
             <Route path='/Subscription' element={<Subscription sideBar={sideBar}/>}/>
             <Route path='/Friends' element={<Friends sideBar={sideBar}/>}/>
-            <Route path='/Post/:id' element={<ViewPost/>}/>
+            <Route path='/post/:id' element={<ViewPost/>}/>
         </Routes>
     )
 }

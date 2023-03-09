@@ -92,7 +92,7 @@ const Navbar = ({searchValue,forms,sideNavbar}) => {
                 <div className="nav-sub-main">
                     <div className="navbar-menu-btn">
                         {
-                        location.pathname!=='/Auth' && location.pathname!=='/AskQuestion' && !location.pathname.includes('/Post') &&
+                        location.pathname!=='/Auth' && location.pathname!=='/AskQuestion' && !location.pathname.includes('/post') &&
                         <button className="menu-btn" onClick={handleNavbar1}>
                             <img src={menuIcon} alt="no img" width={35}/>
                         </button>   
