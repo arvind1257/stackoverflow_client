@@ -2,7 +2,7 @@ import Style from "styled-components"
 
 export const NAVBAR = Style.div`
     padding:initial;
-    @media (max-width: 1360px) {
+    @media (max-width: 1560px) {
         justify-content:center;
         .left-sidebar{
             display:none;
