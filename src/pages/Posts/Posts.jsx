@@ -17,7 +17,7 @@ const Posts = ({sideBar}) =>{
     const currentUser = useSelector((state)=>state.currentUserReducer)
     const [edit,setEdit] = useState(false);
     var colors = []
-    if(posts!==null && colors.length===0){
+    if(posts!==null && posts.length>1 && colors.length===0){
         posts.map((items)=>{
             if(colors.length===0){
             colors.push({
@@ -52,7 +52,7 @@ const Posts = ({sideBar}) =>{
                 !edit ?    
                 <div className="post-container-1">
                 {
-                    colors!==null && posts && posts!==null ? 
+                    colors!==null && posts && posts!==null && posts.length>1 ?  
                     posts.map((item)=>(
                         <div key={item._id} className="post-message-2" >
                                 {
