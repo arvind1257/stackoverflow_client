@@ -39,3 +39,18 @@
     background-color:hsl(0, 0%, 90%);
     transition:background-color 300ms;
 }
+
+.add{
+    z-index:10;
+    bottom:6%;
+    right:3%;
+    position: fixed;
+    width:60px;
+    height:60px;
+}
+.add button{
+    width:60px;
+    height:60px;
+    background-color:#ef8236;
+    border-radius: 30px;
+}
