@@ -1,9 +1,9 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import icon from "../../assests/favicon.ico"
 import AboutAuth from "./AboutAuth";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom"
-import {logIn} from "../../actions/auth.js"
+import {getUsers, logIn} from "../../actions/auth.js"
 import "./Auth.css";
 import OTPVerification from "./OTPVerfication";
 import { useRef } from "react";
@@ -34,6 +34,10 @@ const Auth = () => {
         });
         setClick(true)
     };
+
+    useEffect(()=>{
+        dispatch(getUsers());
+    },[dispatch])
 
     const Users = useSelector(state => state.authReducer);
     const handleSubmit = (e) =>{
